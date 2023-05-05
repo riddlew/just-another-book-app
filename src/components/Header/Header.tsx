@@ -5,35 +5,35 @@ export const Header = () => {
 				<ul className="flex justify-center items-center">
 					<li>
 						<button
-              type="button"
-              className="transition-colors inline-block px-12 py-4 font-bold hover:bg-theme-purple-200"
-            >
-              Manage
-            </button>
+							type="button"
+							className="transition-colors inline-block px-12 py-4 font-bold hover:bg-theme-purple-200"
+						>
+							Manage
+						</button>
 					</li>
 					<li>
 						<button
-              type="button"
-              className="transition-colors inline-block px-12 py-4 font-bold hover:bg-theme-purple-200"
-            >
-              Export
-            </button>
+							type="button"
+							className="transition-colors inline-block px-12 py-4 font-bold hover:bg-theme-purple-200"
+						>
+							Export
+						</button>
 					</li>
 					<li>
 						<button
-              type="button"
-              className="transition-colors inline-block px-12 py-4 font-bold hover:bg-theme-purple-200"
-            >
-              Import
-            </button>
+							type="button"
+							className="transition-colors inline-block px-12 py-4 font-bold hover:bg-theme-purple-200"
+						>
+							Import
+						</button>
 					</li>
 					<li>
 						<button
-              type="button"
-              className="transition-colors inline-block px-12 py-4 font-bold hover:bg-theme-purple-200"
-            >
-              What is this?
-            </button>
+							type="button"
+							className="transition-colors inline-block px-12 py-4 font-bold hover:bg-theme-purple-200"
+						>
+							What is this?
+						</button>
 					</li>
 				</ul>
 			</div>
