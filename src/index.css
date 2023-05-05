@@ -28,8 +28,8 @@ textarea:focus {
 		items-center
 		text-center
 		mt-8
-		w-[25rem]
-		mx-auto;
+		mx-auto
+		sm:w-[25rem]
 }
 .search__btn {
 	@apply
@@ -61,13 +61,14 @@ textarea:focus {
 		inline-grid
 		mx-auto
 		mt-4
-		min-w-[50ch]
 		border
 		bg-white
 		border-theme-gray-100
 		rounded-md
 		items-center
-		relative;
+		relative
+		min-w-full
+		sm:min-w-[50ch];
 
 	grid-template-areas: "select";
 }
@@ -110,4 +111,142 @@ textarea:focus {
 	inset: -4px;
 	border: 4px solid theme('colors.theme-purple.100');
 	border-radius: inherit;
+}
+
+.book-entry {
+	@apply
+		flex
+		flex-col
+		rounded-xl
+		border
+		border-theme-gray-100
+		p-5
+		gap-7
+		mb-5
+		text-center
+		sm:flex-row
+		sm:text-left;
+}
+.book-entry__art {
+	@apply
+		overflow-hidden
+		rounded-md
+		mx-auto;
+
+	max-width: 4.3rem;
+	max-height: 6.2rem;
+}
+.book-entry__art img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+.book-entry__data {
+	@apply
+		grow
+		flex
+		flex-col
+		justify-between
+		min-h-full;
+}
+.book-entry__data h2 {
+	@apply
+		text-lg
+		font-bold;
+}
+.book-entry__chapter-row {
+	@apply
+		flex
+		flex-col
+		mt-5
+		gap-2.5
+		justify-between
+		relative
+		items-center
+		sm:items-start
+		sm:mt-2.5
+		sm:flex-row
+		sm:gap-0;
+}
+.book-entry__chapter-group {
+	@apply
+		flex
+		gap-1
+		h-8;
+
+}
+.book-entry__chapter-value {
+	@apply
+		inline-flex
+		items-center
+		font-bold
+		ml-2
+		py-1
+		px-2
+		h-full
+		border
+		rounded
+		border-theme-gray-100
+		border-dashed
+		cursor-pointer;
+}
+.book-entry__chapter-input {
+	@apply
+		inline-block
+		h-full
+		font-bold
+		ml-2
+		py-1
+		px-2
+		border
+		rounded
+		border-theme-gray-100;
+}
+.book-entry__chapter-plusminus-btn {
+	@apply
+		inline-block
+		rounded
+		bg-theme-purple-300
+		px-3
+		h-full
+		text-white
+		font-bold;
+}
+.book-entry__btns {
+	@apply
+		flex
+		flex-col
+		font-bold
+		justify-between
+		sm:justify-start
+		gap-2.5
+		sm:ml-5
+		sm:gap-5;
+}
+.book-entry__btn__edit,
+.book-entry__btn__delete {
+	@apply
+		rounded
+		text-white
+		w-full
+		py-3
+		sm:w-auto
+		sm:py-0;
+}
+.book-entry__btn__edit {
+	@apply
+		bg-theme-gray-200
+		sm:text-theme-gray-200
+		sm:bg-white;
+}
+.book-entry__btn__delete {
+	@apply
+		bg-theme-red-100
+		sm:text-theme-red-100
+		sm:bg-white;
+}
+.book-entry__btn__mobile-text {
+	@apply
+		ml-3
+		sm:hidden;
 }

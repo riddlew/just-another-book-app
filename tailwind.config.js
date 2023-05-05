@@ -19,7 +19,10 @@ export default {
 				'theme-red': {
 					100: '#a90000',
 				},
-			}
+			},
+		},
+		container: {
+			padding: '1rem',
 		},
 	},
 	plugins: [],
