@@ -6,11 +6,12 @@ import classnames from "classnames";
 interface BookEntryProps {
 	id: number;
 	title: string;
+	artUrl: string;
 	chapter: number;
 	setChapter: (id: number, value: number) => void;
 }
 
-export const BookEntry = ({id, title, chapter, setChapter}: BookEntryProps) => {
+export const BookEntry = ({id, title, artUrl, chapter, setChapter}: BookEntryProps) => {
 	const [editing, setEditing] = useState(false);
 
 	const handleChapterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +35,7 @@ export const BookEntry = ({id, title, chapter, setChapter}: BookEntryProps) => {
 	return (
 		<div className="book-entry">
 			<div className="book-entry__art">
-				<img src="https://www.asurascans.com/wp-content/uploads/2023/04/IronBloodSwordHound05-1.png" alt="" />
+				<img src={artUrl} alt="" />
 			</div>
 			<div className="book-entry__data">
 				<h2>{title}</h2>

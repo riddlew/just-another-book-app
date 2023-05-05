@@ -10,6 +10,7 @@ export const BookList = ({filtered, setNewChapter}: {filtered: any[], setNewChap
 					key={`book-entry-${entry.id}`}
 					id={entry.id}
 					title={entry.title}
+					artUrl={entry.artUrl}
 					chapter={entry.chapter}
 					setChapter={setNewChapter}
 				/>

@@ -9,17 +9,38 @@ function App() {
 		{
 			id: 1,
 			title: 'Revenge of the Iron-Blooded Sword Hound',
+			artUrl: 'https://www.asurascans.com/wp-content/uploads/2023/04/IronBloodSwordHound05-1.png',
 			chapter: 22,
 		},
 		{
 			id: 2,
-			title: 'Inifinite Magician',
+			title: 'Surviving The Game as a Barbarian',
+			artUrl: 'https://www.asurascans.com/wp-content/uploads/2023/04/gameBarbarianCover01.png',
 			chapter: 3,
 		},
 		{
 			id: 3,
-			title: 'I Became a Time Lord',
+			title: 'Superhuman Battlefield',
+			artUrl: 'https://www.asurascans.com/wp-content/uploads/2023/02/superhumanCover02.png',
 			chapter: 104,
+		},
+		{
+			id: 4,
+			title: 'Boundless Necromancer',
+			artUrl: 'https://www.asurascans.com/wp-content/uploads/2022/12/boundlessNecroCover01.png',
+			chapter: 13,
+		},
+		{
+			id: 5,
+			title: 'Reincarnation of the Strongest Sword God',
+			artUrl: 'https://www.asurascans.com/wp-content/uploads/2022/08/SwordGodCover01.png',
+			chapter: 65,
+		},
+		{
+			id: 6,
+			title: 'Demonic Evolution',
+			artUrl: 'https://www.asurascans.com/wp-content/uploads/2023/02/tIEELUSJN.webp-t.w640-vert-copyCUnetauto_scaleLevel3width-1000.jpg',
+			chapter: 45,
 		},
 	]);
 	const [filtered, setFiltered] = useState(entries);
