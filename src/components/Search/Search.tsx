@@ -1,12 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
+import { useAppDispatch } from "@/hooks";
+import { setKeywords } from "@/slices/searchSlice";
+import { filterBooks } from "@/slices/booksSlice";
 
-export const Search = ({filter}) => {
+export const Search = () => {
 	const [visible, setVisible] = useState(false);
+	const dispatch = useAppDispatch();
 
 	const handleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
-		filter(event.target.value.trim());
+		const keywords = event.target.value.trim();
+		dispatch(
+			setKeywords(keywords)
+		);
+		dispatch(
+			filterBooks(keywords)
+		)
 	}
 
 	return (
