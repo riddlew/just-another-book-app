@@ -1,36 +1,36 @@
 export const Header = () => {
 	return (
 		<div className="bg-theme-purple-300 text-white">
-			<div className="container mx-auto">
-				<ul className="flex justify-center items-center">
-					<li>
+			<div className="container mx-auto px-0">
+				<ul className="flex flex-col sm:flex-row justify-center items-center">
+					<li className="block w-full">
 						<button
 							type="button"
-							className="transition-colors inline-block px-12 py-4 font-bold hover:bg-theme-purple-200"
+							className="transition-colors block w-full sm:inline-block sm:px-2 py-4 font-bold hover:bg-theme-purple-200"
 						>
 							Manage
 						</button>
 					</li>
-					<li>
+					<li className="block w-full">
 						<button
 							type="button"
-							className="transition-colors inline-block px-12 py-4 font-bold hover:bg-theme-purple-200"
+							className="transition-colors block w-full sm:inline-block sm:px-2 py-4 font-bold hover:bg-theme-purple-200"
 						>
 							Export
 						</button>
 					</li>
-					<li>
+					<li className="block w-full">
 						<button
 							type="button"
-							className="transition-colors inline-block px-12 py-4 font-bold hover:bg-theme-purple-200"
+							className="transition-colors block w-full sm:inline-block sm:px-2 py-4 font-bold hover:bg-theme-purple-200"
 						>
 							Import
 						</button>
 					</li>
-					<li>
+					<li className="block w-full">
 						<button
 							type="button"
-							className="transition-colors inline-block px-12 py-4 font-bold hover:bg-theme-purple-200"
+							className="transition-colors block w-full sm:inline-block sm:px-2 py-4 font-bold hover:bg-theme-purple-200"
 						>
 							What is this?
 						</button>
