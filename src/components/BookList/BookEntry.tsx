@@ -37,7 +37,7 @@ export const BookEntry = ({id, title, chapter, setChapter}: BookEntryProps) => {
 				<img src="https://www.asurascans.com/wp-content/uploads/2023/04/IronBloodSwordHound05-1.png" alt="" />
 			</div>
 			<div className="book-entry__data">
-				<h2>Revenge of the Iron-Blooded Sword Hound</h2>
+				<h2>{title}</h2>
 				<div className="book-entry__chapter-row">
 					<div className="book-entry__chapter-group">
 						<label>
