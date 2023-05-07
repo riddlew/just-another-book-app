@@ -17,6 +17,9 @@ export const BookList = () => {
 					lastRead={entry.lastRead}
 				/>
 			))}
+			{filtered.length === 0 && (
+				<p className="text-center">Your list is empty!</p>
+			)}
 		</div>
 	)
 }
