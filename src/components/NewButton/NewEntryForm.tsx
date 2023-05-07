@@ -13,15 +13,19 @@ export const NewEntryForm = ({onSubmit, onCancel}: ModalFormProps) => {
 		const artUrl = data.artUrl || 'https://placehold.co/68x98';
 
 		console.log(data, artUrl);
-		dispatch(addEntry({
-			title,
-			url,
-			artUrl,
-			chapter,
-			lastRead: Date.now(),
-		}))
+		const list = document.getElementById('list_selector') as HTMLSelectElement;
+		if (list) {
+			dispatch(addEntry({
+				listName: list.value,
+				title,
+				url,
+				artUrl,
+				chapter,
+				lastRead: Date.now(),
+			}))
 
-		onSubmit && onSubmit();
+			onSubmit && onSubmit();
+		}
 	}
 
 	return (

@@ -1,15 +1,19 @@
 import { Entry } from "@/types";
 
-export function loadStorage(): Entry[] {
-	const data = localStorage.getItem('entries');
+export function loadAllFromStorage() {
+	return [];
+}
+
+export function loadListFromStorage(name: string): Entry[] | null {
+	const data = localStorage.getItem(name);
 
 	if (data) {
 		return JSON.parse(data);
 	}
 
-	return [];
+	return null;
 }
 
-export function saveStorage(entries: Entry[]) {
-	localStorage.setItem('entries', JSON.stringify(entries));
+export function saveListToStorage(name: string, entries: Entry[]) {
+	localStorage.setItem(name, JSON.stringify(entries));
 }

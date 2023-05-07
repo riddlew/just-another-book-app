@@ -1,20 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@/store'
-import { EntriesSliceState, EntriesSliceUpdateData, Entry } from '@/types';
-import { loadStorage, saveStorage } from '@/storage';
+import { EntriesSliceState, EntriesSliceUpdateData, NewEntry } from '@/types';
+import { loadAllFromStorage, loadListFromStorage, saveListToStorage } from '@/storage';
 
-type NewEntry = Omit<Entry, 'id'>;
-
-const loadFromStorage = () => {
-	const data = loadStorage();
-	return {
-		list: data,
-		filtered: data,
-	};
-}
-
-const initialState: EntriesSliceState = loadFromStorage();
+const initialState: EntriesSliceState = {
+	list: [],
+	filtered: [],
+};
 
 export const entriesSlice = createSlice({
 	name: 'entries',
@@ -50,8 +43,17 @@ export const entriesSlice = createSlice({
 				...action.payload
 			};
 			state.list.push(newItem);
-			saveStorage(state.list);
+			saveListToStorage(action.payload.listName, state.list);
 		},
+		loadList: (state, action: PayloadAction<string>) => {
+			const data = loadListFromStorage(action.payload);
+
+			if (data) {
+				state.list = state.filtered = data;
+			} else {
+				state.list = state.filtered = [];
+			}
+		}
 		// removeBookById: (state, payload) => {
 
 		// },
@@ -65,6 +67,7 @@ export const {
 	updateEntryById,
 	filterEntries,
 	addEntry,
+	loadList,
 } = entriesSlice.actions;
 
 export const selectEntriesList = (state: RootState) => state.entries.list.values;

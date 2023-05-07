@@ -30,6 +30,8 @@ export type NewEntryData = Pick<
 	'title' | 'url' | 'chapter'
 > & { artUrl: string };
 
+export type NewEntry = Omit<Entry, 'id'> & { listName: string };
+
 export interface EntriesSliceState {
 	list: Entry[];
 	filtered: Entry[];
