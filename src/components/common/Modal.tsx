@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 interface ModalProps {
-	children: JSX.Element;
+	children: React.ReactNode;
 	onClose?: () => void;
 	onSubmit?: () => void;
 }
