@@ -17,11 +17,13 @@ export const NewEntryForm = ({onSubmit, onCancel}: ModalFormProps) => {
 		if (list) {
 			dispatch(addEntry({
 				listName: list.value,
-				title,
-				url,
-				artUrl,
-				chapter,
-				lastRead: Date.now(),
+				data: {
+					title,
+					url,
+					artUrl,
+					chapter,
+					lastRead: Date.now(),
+				},
 			}))
 
 			onSubmit && onSubmit();

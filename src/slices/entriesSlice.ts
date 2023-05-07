@@ -3,6 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@/store'
 import { EntriesSliceState, EntriesSliceUpdateData, NewEntry } from '@/types';
 import { loadAllFromStorage, loadListFromStorage, saveListToStorage } from '@/storage';
+import {v4 as uuidv4} from 'uuid'
 
 const initialState: EntriesSliceState = {
 	list: [],
@@ -38,9 +39,13 @@ export const entriesSlice = createSlice({
 			state.filtered = state.list.filter(entry => regex.test(entry.title));
 		},
 		addEntry: (state, action: PayloadAction<NewEntry>) => {
+			let uuid = uuidv4();
+			while (state.list.includes(uuid)) {
+				uuid = uuidv4();
+			}
 			const newItem = {
-				id: state.list.length,
-				...action.payload
+				id: uuid,
+				...action.payload.data
 			};
 			state.list.push(newItem);
 			saveListToStorage(action.payload.listName, state.list);

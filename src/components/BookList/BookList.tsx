@@ -8,7 +8,7 @@ export const BookList = () => {
 		<div className="book-list">
 			{filtered.map(entry => (
 				<BookEntry
-					key={`book-entry-${entry.id}`}
+					key={entry.id}
 					id={entry.id}
 					title={entry.title}
 					url={entry.url}
