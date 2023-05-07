@@ -1,17 +1,10 @@
 export interface Entry {
-	id: number;
+	id: string;
 	title: string;
 	url: string;
 	artUrl: string;
 	chapter: number;
 	lastRead: number;
-}
-
-export interface EntryProps extends Entry {
-	id: number;
-	title: string;
-	artUrl: string;
-	chapter: number;
 }
 
 export interface ModalProps {
@@ -42,6 +35,6 @@ export interface EntriesSliceState {
 }
 
 export interface EntriesSliceUpdateData {
-	id: number;
+	id: string;
 	data: Partial<Entry>;
 }

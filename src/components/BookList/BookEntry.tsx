@@ -4,13 +4,20 @@ import { useState } from "react"
 import classnames from "classnames";
 import { useAppDispatch } from '@/hooks'
 import { updateEntryById } from '@/slices/entriesSlice'
-import { EntryProps } from "@/types";
+import { Entry } from "@/types";
 
-export const BookEntry = ({id, title, artUrl, chapter}: EntryProps) => {
+export const BookEntry = ({
+	id,
+	title,
+	url,
+	artUrl,
+	chapter,
+	lastRead
+}: Entry) => {
 	const [editing, setEditing] = useState(false);
 	const dispatch = useAppDispatch();
 
-	const setChapter = (id: number, value: number) => {
+	const setChapter = (id: string, value: number) => {
 		dispatch(
 			updateEntryById({
 				id,
