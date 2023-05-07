@@ -18,7 +18,7 @@ export const Modal = ({children, onClose, onSubmit}: ModalProps) => {
 		if (root) {
 			root.style.display = 'none';
 			root.removeEventListener('click', destroyModal);
-			onClose();
+			onClose && onClose();
 		}
 	}, [onClose, root]);
 
