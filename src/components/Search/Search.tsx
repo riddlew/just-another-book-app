@@ -2,8 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
 import { useAppDispatch } from "@/hooks";
-import { setKeywords } from "@/slices/searchSlice";
-import { filterEntries } from "@/slices/entriesSlice";
+import { filterEntries, setKeywords } from "@/slices/entriesSlice";
 
 export const Search = () => {
 	const [visible, setVisible] = useState(false);

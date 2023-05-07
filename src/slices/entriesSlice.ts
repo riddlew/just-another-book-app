@@ -8,6 +8,7 @@ import {v4 as uuidv4} from 'uuid'
 const initialState: EntriesSliceState = {
 	list: [],
 	filtered: [],
+	keywords: '',
 };
 
 export const entriesSlice = createSlice({
@@ -49,6 +50,10 @@ export const entriesSlice = createSlice({
 			};
 			state.list.push(newItem);
 			saveListToStorage(action.payload.listName, state.list);
+			entriesSlice.caseReducers.filterEntries(state, {
+				type: 'filterEntries',
+				payload: state.keywords
+			});
 		},
 		loadList: (state, action: PayloadAction<string>) => {
 			const data = loadListFromStorage(action.payload);
@@ -58,13 +63,19 @@ export const entriesSlice = createSlice({
 			} else {
 				state.list = state.filtered = [];
 			}
-		}
+		},
 		// removeBookById: (state, payload) => {
 
 		// },
 		// setList: (state, payload) => {
 
 		// },
+		setKeywords: (state, action: PayloadAction<string>) => {
+			state.keywords = action.payload;
+		},
+		clearKeywords: (state) => {
+			state.keywords = '';
+		}
 	},
 });
 
@@ -73,6 +84,8 @@ export const {
 	filterEntries,
 	addEntry,
 	loadList,
+	setKeywords,
+	clearKeywords,
 } = entriesSlice.actions;
 
 export const selectEntriesList = (state: RootState) => state.entries.list.values;

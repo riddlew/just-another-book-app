@@ -38,13 +38,10 @@ export interface NewEntry {
 export interface EntriesSliceState {
 	list: Entry[];
 	filtered: Entry[];
+	keywords: string;
 }
 
 export interface EntriesSliceUpdateData {
 	id: number;
 	data: Partial<Entry>;
-}
-
-export interface SearchSliceState {
-	keywords?: string;
 }
