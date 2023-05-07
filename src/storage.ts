@@ -15,5 +15,10 @@ export function loadListFromStorage(name: string): Entry[] | null {
 }
 
 export function saveListToStorage(name: string, entries: Entry[]) {
-	localStorage.setItem(name, JSON.stringify(entries));
+	try {
+		localStorage.setItem(name, JSON.stringify(entries));
+		return true;
+	} catch {
+		return false;
+	}
 }

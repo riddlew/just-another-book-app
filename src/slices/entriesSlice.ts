@@ -2,8 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@/store'
 import { EntriesSliceState, EntriesSliceUpdateData, NewEntry } from '@/types';
-import { loadAllFromStorage, loadListFromStorage, saveListToStorage } from '@/storage';
+import { loadListFromStorage, saveListToStorage } from '@/storage';
 import {v4 as uuidv4} from 'uuid'
+import toast from 'react-hot-toast'
 
 const initialState: EntriesSliceState = {
 	list: [],
@@ -49,11 +50,15 @@ export const entriesSlice = createSlice({
 				...action.payload.data
 			};
 			state.list.push(newItem);
-			saveListToStorage(action.payload.listName, state.list);
-			entriesSlice.caseReducers.filterEntries(state, {
-				type: 'filterEntries',
-				payload: state.keywords
-			});
+			if(saveListToStorage(action.payload.listName, state.list)) {
+				toast.success('Entry successfully added');
+				entriesSlice.caseReducers.filterEntries(state, {
+					type: 'filterEntries',
+					payload: state.keywords
+				});
+			} else {
+				toast.error('Failed to create new entry');
+			}
 		},
 		loadList: (state, action: PayloadAction<string>) => {
 			const data = loadListFromStorage(action.payload);
@@ -62,6 +67,8 @@ export const entriesSlice = createSlice({
 				state.list = state.filtered = data;
 			} else {
 				state.list = state.filtered = [];
+				toast.error(`Failed to load the selected list "${action.payload}"`);
+				console.error(`Failed to load the selected list "${action.payload}"`)
 			}
 		},
 		// removeBookById: (state, payload) => {
