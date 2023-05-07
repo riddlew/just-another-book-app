@@ -3,22 +3,16 @@ import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
 import classnames from "classnames";
 import { useAppDispatch } from '@/hooks'
-import { updateBookById } from '@/slices/booksSlice'
+import { updateEntryById } from '@/slices/entriesSlice'
+import { EntryProps } from "@/types";
 
-interface BookEntryProps {
-	id: number;
-	title: string;
-	artUrl: string;
-	chapter: number;
-}
-
-export const BookEntry = ({id, title, artUrl, chapter}: BookEntryProps) => {
+export const BookEntry = ({id, title, artUrl, chapter}: EntryProps) => {
 	const [editing, setEditing] = useState(false);
 	const dispatch = useAppDispatch();
 
 	const setChapter = (id: number, value: number) => {
 		dispatch(
-			updateBookById({
+			updateEntryById({
 				id,
 				data: {
 					chapter: value

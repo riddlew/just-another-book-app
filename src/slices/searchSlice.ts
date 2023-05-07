@@ -1,12 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@/store'
+import { SearchSliceState } from '@/interfaces';
 
-interface SearchState {
-	keywords?: string;
-}
-
-const initialState: SearchState = {};
+const initialState: SearchSliceState = {};
 
 export const searchSlice = createSlice({
 	name: 'search',

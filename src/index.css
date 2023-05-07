@@ -60,6 +60,17 @@ textarea:focus {
 		font-bold;
 }
 
+.modal input.error {
+	outline: 4px solid theme('colors.theme-red.50');
+}
+
+.modal .errorDescription {
+	@apply
+		font-bold
+		text-theme-red-100
+		mt-4;
+}
+
 .search {
 	@apply
 		flex

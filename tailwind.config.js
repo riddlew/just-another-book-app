@@ -17,6 +17,7 @@ export default {
 					200: '#737373',
 				},
 				'theme-red': {
+					50: '#ff6a92',
 					100: '#a90000',
 				},
 				'theme-green': {

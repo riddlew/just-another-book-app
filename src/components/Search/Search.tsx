@@ -3,7 +3,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
 import { useAppDispatch } from "@/hooks";
 import { setKeywords } from "@/slices/searchSlice";
-import { filterBooks } from "@/slices/booksSlice";
+import { filterEntries } from "@/slices/entriesSlice";
 
 export const Search = () => {
 	const [visible, setVisible] = useState(false);
@@ -15,7 +15,7 @@ export const Search = () => {
 			setKeywords(keywords)
 		);
 		dispatch(
-			filterBooks(keywords)
+			filterEntries(keywords)
 		)
 	}
 

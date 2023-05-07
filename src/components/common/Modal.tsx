@@ -1,17 +1,12 @@
+import { ModalProps } from "@/types";
 import { useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-interface ModalProps {
-	children: React.ReactNode;
-	onClose?: () => void;
-	onSubmit?: () => void;
-}
-
-export const Modal = ({children, onClose, onSubmit}: ModalProps) => {
-	// const dispatch = useAppDispatch();
+export const Modal = ({children, width, onClose}: ModalProps) => {
 	const root = document.getElementById('modal-root');
 	const modal = document.createElement('div');
-	modal.className = 'modal modal--new-entry';
+	modal.className = 'modal';
+	modal.style.width = width || 'auto';
 	modal.addEventListener('click', (event) => event.stopPropagation());
 
 	const destroyModal = useCallback(() => {
