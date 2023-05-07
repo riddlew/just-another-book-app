@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@/store'
 
@@ -152,13 +152,7 @@ export const booksSlice = createSlice({
 			const regex = new RegExp(`${keywordsGlob}`, 'i');
 			state.filtered = state.list.filter(entry => regex.test(entry.title));
 		}
-		// updateBookByIndex: (state, payload) => {
-
-		// },
 		// removeBookById: (state, payload) => {
-
-		// },
-		// removeBookByIndex: (state, payload) => {
 
 		// },
 		// addBook: (state, payload) => {

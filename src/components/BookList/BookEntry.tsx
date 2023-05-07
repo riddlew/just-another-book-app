@@ -2,17 +2,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
 import classnames from "classnames";
+import { useAppDispatch } from '@/hooks'
+import { updateBookById } from '@/slices/booksSlice'
 
 interface BookEntryProps {
 	id: number;
 	title: string;
 	artUrl: string;
 	chapter: number;
-	setChapter: (id: number, value: number) => void;
 }
 
-export const BookEntry = ({id, title, artUrl, chapter, setChapter}: BookEntryProps) => {
+export const BookEntry = ({id, title, artUrl, chapter}: BookEntryProps) => {
 	const [editing, setEditing] = useState(false);
+	const dispatch = useAppDispatch();
+
+	const setChapter = (id: number, value: number) => {
+		dispatch(
+			updateBookById({
+				id,
+				data: {
+					chapter: value
+				}
+			})
+		);
+	};
 
 	const handleChapterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		event.preventDefault();

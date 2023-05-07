@@ -21,6 +21,45 @@ textarea:focus {
 	outline: 4px solid theme('colors.theme-purple.100');
 }
 
+#modal-root {
+	display: none;
+	position: absolute;
+	inset: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 9000;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal {
+	@apply
+		rounded-lg
+		bg-white
+		p-5
+		min-w-[20rem]
+		min-h-[20rem];
+}
+
+.modal h2 {
+	@apply
+		text-center
+		text-xl
+		font-bold;
+}
+
+.modal input {
+	@apply
+		block
+		border
+		border-theme-gray-200
+		rounded-md
+		py-2
+		px-4
+		w-full
+		mt-2.5
+		font-bold;
+}
+
 .search {
 	@apply
 		flex
@@ -111,6 +150,26 @@ textarea:focus {
 	inset: -4px;
 	border: 4px solid theme('colors.theme-purple.100');
 	border-radius: inherit;
+}
+
+.action-buttons {
+	@apply
+		flex
+		justify-end
+		mb-5;
+}
+.action-buttons__new {
+	@apply
+		rounded-md
+		font-bold
+		bg-theme-green-100
+		flex
+		justify-center
+		items-center
+		gap-2.5
+		text-white
+		py-2.5
+		px-5;
 }
 
 .book-entry {

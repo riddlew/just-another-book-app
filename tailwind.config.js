@@ -19,6 +19,9 @@ export default {
 				'theme-red': {
 					100: '#a90000',
 				},
+				'theme-green': {
+					100: '#48b053',
+				}
 			},
 		},
 		container: {
