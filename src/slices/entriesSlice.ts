@@ -41,7 +41,7 @@ export const entriesSlice = createSlice({
 		},
 		addEntry: (state, action: PayloadAction<NewEntry>) => {
 			let uuid = uuidv4();
-			while (state.list.includes(uuid)) {
+			while (state.list.find(entry => entry.id === uuid)) {
 				uuid = uuidv4();
 			}
 			const newItem = {
