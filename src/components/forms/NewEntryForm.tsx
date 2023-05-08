@@ -105,6 +105,7 @@ export const NewEntryForm = ({onSubmit, onCancel}: ModalFormProps) => {
 			</button>
 			<button
 				type="button"
+				className="font-bold rounded-md block w-full bg-theme-gray-200 text-white py-2.5 px-5 mt-2.5"
 				onClick={onCancel}
 			>
 				Cancel
