@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import classnames from "classnames";
 import { useAppDispatch } from '@/hooks'
 import { updateEntryById } from '@/slices/entriesSlice'

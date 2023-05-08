@@ -38,6 +38,7 @@ export const Search = () => {
 			</div>
 			{visible && (
 				<input
+					ref={(ref) => ref?.focus()}
 					type="text"
 					className="search__input"
 					onChange={handleFilter}
