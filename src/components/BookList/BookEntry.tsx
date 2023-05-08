@@ -18,6 +18,7 @@ export const BookEntry = ({
 }: Entry) => {
 	const [editing, setEditing] = useState(false);
 	const [deleteConfirmModalOpen, setDeleteConfirmModalOpen] = useState(false);
+	const [chap, setChap] = useState<string|number>(chapter);
 	const dispatch = useAppDispatch();
 
 	const setChapter = (id: string, value: number) => {
@@ -33,10 +34,7 @@ export const BookEntry = ({
 
 	const handleChapterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		event.preventDefault();
-		const value = event.target.value.trim();
-		if(value !== "" && !Number.isNaN(+value)) {
-			setChapter(id, +value);
-		}
+		setChap(event.target.value.trim())
 	}
 
 	const handleChapterFocus = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -46,8 +44,19 @@ export const BookEntry = ({
 
 	const handleChapterBlur = (event: React.FocusEvent<HTMLInputElement>) => {
 		event.preventDefault();
+		setChapter(id, Math.max(+chap, 0));
 		setEditing(false);
 	};
+
+	const handleChapterInc = () => {
+		setChap(Math.max(Math.floor(+chap + 1), 0));
+		setChapter(id, Math.max(+chap + 1, 0));
+	}
+
+	const handleChapterDec = () => {
+		setChap(Math.max(Math.floor(+chap - 1), 0));
+		setChapter(id, Math.max(+chap - 1, 0));
+	}
 
 	const handleDelete = () => {
 		setDeleteConfirmModalOpen(true);
@@ -85,7 +94,7 @@ export const BookEntry = ({
 									)}
 									type="text"
 									size={4}
-									value={chapter}
+									value={chap}
 									onChange={handleChapterChange}
 									onFocus={handleChapterFocus}
 									onBlur={handleChapterBlur}
@@ -99,7 +108,7 @@ export const BookEntry = ({
 										"opacity-0 absolute": !editing
 									}
 								)}
-								onClick={() => setChapter(id, Math.max(chapter - 1, 0))}
+								onClick={handleChapterDec}
 								onFocus={() => setEditing(true)}
 								onBlur={() => setEditing(false)}
 							>
@@ -113,7 +122,7 @@ export const BookEntry = ({
 										"opacity-0 absolute": !editing
 									}
 								)}
-								onClick={() => setChapter(id, chapter + 1)}
+								onClick={handleChapterInc}
 								onFocus={() => setEditing(true)}
 								onBlur={() => setEditing(false)}
 							>
