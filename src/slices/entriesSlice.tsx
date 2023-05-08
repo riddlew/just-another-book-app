@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@/store'
-import { EntriesSliceState, EntriesSliceUpdateData, Entry, List, NewEntry } from '@/types';
+import { EntriesSliceState, EntriesSliceUpdateData, List, NewEntry } from '@/types';
 import {
 	addListToStorage,
 	deleteListFromStorage,
@@ -110,7 +110,6 @@ export const entriesSlice = createSlice({
 				console.log(data);
 
 				if (data) {
-					const select = document.getElementById('list_selector') as HTMLSelectElement;
 					const newSlug = action.payload.name.replaceAll(' ', '_').toLowerCase();
 
 					deleteListFromStorage(listData.slug)
