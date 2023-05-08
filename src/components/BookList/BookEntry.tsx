@@ -166,6 +166,7 @@ export const BookEntry = ({
 						onSubmit={() => setDeleteConfirmModalOpen(false)}
 						onCancel={() => setDeleteConfirmModalOpen(false)}
 						entryId={id}
+						entryName={title}
 					/>
 				</Modal>
 			}

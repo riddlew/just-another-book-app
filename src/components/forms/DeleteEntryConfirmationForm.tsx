@@ -3,7 +3,7 @@ import { useAppDispatch } from '@/hooks';
 import { removeEntry } from '@/slices/entriesSlice';
 import { useEffect, useRef } from 'react';
 
-export const DeleteEntryConfirmationForm = ({onSubmit, onCancel, entryId}: ModalFormProps & { entryId: string }) => {
+export const DeleteEntryConfirmationForm = ({onSubmit, onCancel, entryId, entryName}: ModalFormProps & { entryId: string, entryName: string }) => {
 	const dispatch = useAppDispatch();
 	const deleteBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -22,7 +22,7 @@ export const DeleteEntryConfirmationForm = ({onSubmit, onCancel, entryId}: Modal
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<h2>Are you sure you want to delete this entry?</h2>
+			<h2>Are you sure you want to delete <span className="text-theme-red-100">{entryName}</span>?</h2>
 			<button
 				type="submit"
 				ref={deleteBtnRef}
