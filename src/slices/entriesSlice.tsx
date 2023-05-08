@@ -117,6 +117,7 @@ export const entriesSlice = createSlice({
 						name: action.payload.name,
 						slug: newSlug,
 					};
+					state.currentList = newSlug;
 					entriesSlice.caseReducers.loadList(state, {
 						type: 'removeList',
 						payload: newSlug,

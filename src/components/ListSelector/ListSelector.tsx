@@ -5,6 +5,7 @@ import { useEffect } from "react"
 export const ListSelector = () => {
   const dispatch = useAppDispatch();
   const lists = useAppSelector(state => state.entries.lists);
+  const currentList = useAppSelector(state => state.entries.currentList);
 
   useEffect(() => {
     const list = document.getElementById('list_selector') as HTMLSelectElement;
@@ -36,9 +37,13 @@ export const ListSelector = () => {
           <select
             id="list_selector"
             onChange={handleListChange}
+            value={currentList}
           >
             {lists.map(list => (
-              <option key={list.slug} value={list.slug}>{list.name}</option>
+              <option
+                key={list.slug}
+                value={list.slug}
+              >{list.name}</option>
 
             ))}
           </select>
