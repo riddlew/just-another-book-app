@@ -163,9 +163,17 @@ export const entriesSlice = createSlice({
 		},
 		setKeywords: (state, action: PayloadAction<string>) => {
 			state.keywords = action.payload;
+			entriesSlice.caseReducers.filterEntries(state, {
+				type: 'filterEntries',
+				payload: action.payload,
+			});
 		},
 		clearKeywords: (state) => {
 			state.keywords = '';
+			entriesSlice.caseReducers.filterEntries(state, {
+				type: 'filterEntries',
+				payload: '',
+			});
 		}
 	},
 });

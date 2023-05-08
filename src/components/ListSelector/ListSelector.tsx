@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { loadList, loadLists } from "@/slices/entriesSlice";
+import { clearKeywords, loadList, loadLists } from "@/slices/entriesSlice";
 import { useEffect } from "react"
 
 export const ListSelector = () => {
@@ -24,6 +24,7 @@ export const ListSelector = () => {
 
   function handleListChange(event: React.ChangeEvent<HTMLSelectElement>) {
     const value = event.target.value;
+    dispatch(clearKeywords());
     dispatch(loadList(value));
   }
 
