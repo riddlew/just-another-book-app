@@ -37,7 +37,7 @@ textarea:focus {
 		bg-white
 		p-5
 		min-w-[20rem]
-		min-h-[20rem];
+		min-h-0;
 }
 
 .modal h2 {
@@ -83,6 +83,7 @@ textarea:focus {
 }
 .search__btn {
 	@apply
+		inline-block
 		border
 		border-theme-gray-100
 		rounded-full
@@ -109,8 +110,6 @@ textarea:focus {
 .current-select {
 	@apply
 		inline-grid
-		mx-auto
-		mt-4
 		border
 		bg-white
 		border-theme-gray-100
