@@ -7,6 +7,11 @@ export interface Entry {
 	lastRead: number;
 }
 
+export interface List {
+	name: string;
+	slug: string;
+}
+
 export interface ModalProps {
 	children: React.ReactNode;
 	width?: string;
@@ -29,7 +34,9 @@ export interface NewEntry {
  }
 
 export interface EntriesSliceState {
+	lists: List[];
 	list: Entry[];
+	currentList: string;
 	filtered: Entry[];
 	keywords: string;
 }

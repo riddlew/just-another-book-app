@@ -3,10 +3,11 @@ import classnames from 'classnames'
 import { ModalFormProps, NewEntryData } from '@/types';
 import { useAppDispatch } from '@/hooks';
 import { addEntry } from '@/slices/entriesSlice';
+import { useEffect } from 'react';
 
 export const NewEntryForm = ({onSubmit, onCancel}: ModalFormProps) => {
 	const dispatch = useAppDispatch();
-	const { register, handleSubmit, formState: { errors }} = useForm<NewEntryData>();
+	const { register, handleSubmit, setFocus, formState: { errors }} = useForm<NewEntryData>();
 
 	function withSubmit(data) {
 		const { title, url, chapter } = data;
@@ -29,6 +30,13 @@ export const NewEntryForm = ({onSubmit, onCancel}: ModalFormProps) => {
 			onSubmit && onSubmit();
 		}
 	}
+
+	useEffect(() => {
+		// Focus after it's done rendering
+		setTimeout(() => {
+			setFocus('title');
+		})
+	}, [setFocus])
 
 	return (
 		<form onSubmit={handleSubmit(withSubmit)}>
@@ -97,7 +105,6 @@ export const NewEntryForm = ({onSubmit, onCancel}: ModalFormProps) => {
 			</button>
 			<button
 				type="button"
-				className="font-bold rounded-md block w-full bg-theme-red-100 text-white py-2.5 px-5 mt-2.5"
 				onClick={onCancel}
 			>
 				Cancel

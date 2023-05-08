@@ -1,6 +1,15 @@
-import { Entry } from "@/types";
+import { Entry, List } from "@/types";
 
 export function loadAllFromStorage() {
+	return [];
+}
+
+export function getListsFromStorage(): List[] {
+	const data = localStorage.getItem('keys');
+	if (data) {
+		return JSON.parse(data);
+	}
+
 	return [];
 }
 
@@ -21,4 +30,45 @@ export function saveListToStorage(name: string, entries: Entry[]) {
 	} catch {
 		return false;
 	}
+}
+
+export function deleteListFromStorage(name: string) {
+	const listsStr = localStorage.getItem('keys');
+	if (!listsStr) return false;
+
+	const lists: List[] = JSON.parse(listsStr);
+	const keyIdx = lists.findIndex(l => l.slug === name);
+	if (keyIdx > -1) {
+		localStorage.removeItem(lists[keyIdx].slug);
+		lists.splice(keyIdx, 1);
+		localStorage.setItem('keys', JSON.stringify(lists));
+		return true;
+	}
+
+	return false;
+}
+
+interface Opts {
+	index?: number;
+	data?: Entry[];
+}
+export function addListToStorage(name: string, slug: string, opts?: Opts) {
+	const listsStr = localStorage.getItem('keys');
+	if (!listsStr) return false;
+
+	const lists: List[] = JSON.parse(listsStr);
+
+	if (opts && opts.index) {
+		lists.splice(opts.index, 0, {name, slug})
+	} else {
+		lists.push({ name, slug});
+	}
+	localStorage.setItem('keys', JSON.stringify(lists));
+
+	if (opts && opts.data)
+		localStorage.setItem(slug, JSON.stringify(opts.data));
+	else
+		localStorage.setItem(slug, JSON.stringify([]));
+
+	return true;
 }

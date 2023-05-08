@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react";
 import { Modal } from '@/components/common/Modal'
-import { NewEntryForm } from './NewEntryForm'
+import { NewEntryForm } from '@/components/forms/NewEntryForm'
 
 export const NewButton = () => {
 	const [modalOpen, setModalOpen] = useState(false);

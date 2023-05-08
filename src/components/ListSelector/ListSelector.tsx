@@ -1,10 +1,10 @@
-import { useAppDispatch } from "@/hooks";
-import { loadList } from "@/slices/entriesSlice";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { loadList, loadLists } from "@/slices/entriesSlice";
 import { useEffect } from "react"
-import { toast } from 'react-hot-toast'
 
 export const ListSelector = () => {
   const dispatch = useAppDispatch();
+  const lists = useAppSelector(state => state.entries.lists);
 
   useEffect(() => {
     const list = document.getElementById('list_selector') as HTMLSelectElement;
@@ -18,15 +18,28 @@ export const ListSelector = () => {
     return () => clearTimeout(timeout);
   }, [dispatch]);
 
-	return (
-		<>
-			<p className="text-center">You are currently reading</p>
-      <div className="text-center">
+  useEffect(() => {
+    dispatch(loadLists());
+  }, [dispatch]);
+
+  function handleListChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    const value = event.target.value;
+    dispatch(loadList(value));
+  }
+
+  return (
+    <>
+      <p className="text-center">You are currently reading</p>
+      <div className="flex justify-center items-center mt-4 gap-2">
         <div className="current-select">
-          <select id="list_selector">
-            <option value="test">Test</option>
-            <option value="my_list">My List</option>
-            <option value="my_list_with_a_really_long_name">My List With a Really Long Name</option>
+          <select
+            id="list_selector"
+            onChange={handleListChange}
+          >
+            {lists.map(list => (
+              <option key={list.slug} value={list.slug}>{list.name}</option>
+
+            ))}
           </select>
           <span className="current-select__focus"></span>
         </div>
