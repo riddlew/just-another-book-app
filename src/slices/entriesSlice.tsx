@@ -2,13 +2,21 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@/store'
 import { EntriesSliceState, EntriesSliceUpdateData, Entry, List, NewEntry } from '@/types';
-import { addListToStorage, deleteListFromStorage, getListsFromStorage, loadListFromStorage, saveListToStorage } from '@/storage';
+import {
+	addListToStorage,
+	deleteListFromStorage,
+	getListsFromStorage,
+	loadListFromStorage,
+	saveListToStorage,
+	getCurrentListFromStorage,
+	saveCurrentListToStorage
+} from '@/storage';
 import {v4 as uuidv4} from 'uuid'
 import toast from 'react-hot-toast'
 
 const initialState: EntriesSliceState = {
 	lists: [],
-	currentList: '',
+	currentList: getCurrentListFromStorage(),
 	list: [],
 	filtered: [],
 	keywords: '',
@@ -83,6 +91,7 @@ export const entriesSlice = createSlice({
 			if (data) {
 				state.currentList = action.payload;
 				state.list = state.filtered = data;
+				saveCurrentListToStorage(action.payload);
 			} else {
 				state.currentList = '';
 				state.list = state.filtered = [];

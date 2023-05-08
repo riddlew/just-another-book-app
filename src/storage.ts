@@ -72,3 +72,12 @@ export function addListToStorage(name: string, slug: string, opts?: Opts) {
 
 	return true;
 }
+
+export function getCurrentListFromStorage() {
+	const currentList = localStorage.getItem('currentList');
+	return currentList || '';
+}
+
+export function saveCurrentListToStorage(slug: string) {
+	localStorage.setItem('currentList', slug);
+}
