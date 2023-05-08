@@ -146,6 +146,11 @@ export const entriesSlice = createSlice({
 					slug
 				}
 			];
+			state.currentList = slug;
+			entriesSlice.caseReducers.loadList(state, {
+				type: 'loadList',
+				payload: slug,
+			});
 		},
 		removeList: (state, action: PayloadAction<string>) => {
 			if(deleteListFromStorage(action.payload)) {
