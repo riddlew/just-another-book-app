@@ -1,4 +1,4 @@
-import { Entry, List } from "@/types";
+import { AddListToStorageOpts, Entry, List } from "@/types";
 
 export function loadAllFromStorage() {
 	return [];
@@ -48,11 +48,7 @@ export function deleteListFromStorage(name: string) {
 	return false;
 }
 
-interface Opts {
-	index?: number;
-	data?: Entry[];
-}
-export function addListToStorage(name: string, slug: string, opts?: Opts) {
+export function addListToStorage(name: string, slug: string, opts?: AddListToStorageOpts) {
 	const listsStr = localStorage.getItem('keys');
 	if (!listsStr) return false;
 

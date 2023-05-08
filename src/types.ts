@@ -45,3 +45,8 @@ export interface EntriesSliceUpdateData {
 	id: string;
 	data: Partial<Entry>;
 }
+
+export interface AddListToStorageOpts {
+	index?: number;
+	data?: Entry[];
+}
