@@ -1,15 +1,15 @@
 import { useForm } from 'react-hook-form'
 import classnames from 'classnames'
-import { ModalFormProps, NewEntryData } from '@/types';
+import { ListEditDeleteProps, ModalFormProps, NewEntryData } from '@/types';
 import { useAppDispatch } from '@/hooks';
-import { addEntry, addList } from '@/slices/entriesSlice';
-import { useEffect, useRef } from 'react';
+import { addList } from '@/slices/entriesSlice';
+import { useEffect } from 'react';
 
 export const NewListForm = ({onSubmit, onCancel}: ModalFormProps) => {
 	const dispatch = useAppDispatch();
-	const { register, handleSubmit, setFocus, formState: { errors }} = useForm<NewEntryData>();
+	const { register, handleSubmit, setFocus, formState: { errors }} = useForm<ListEditDeleteProps>();
 
-	function withSubmit({title}) {
+	function withSubmit({title}: ListEditDeleteProps) {
 		dispatch(addList(title))
 		onSubmit && onSubmit();
 	}

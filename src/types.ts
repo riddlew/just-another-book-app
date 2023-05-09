@@ -23,10 +23,14 @@ export interface ModalFormProps {
 	onCancel?: () => void;
 }
 
+export interface ListEditDeleteProps {
+	title: string;
+}
+
 export type NewEntryData = Pick<
 	Entry,
-	'title' | 'url' | 'chapter'
-> & { artUrl: string };
+	'title' | 'url' | 'chapter' | 'artUrl'
+>
 
 export interface NewEntry {
 	listName: string

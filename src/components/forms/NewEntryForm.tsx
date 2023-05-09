@@ -9,7 +9,7 @@ export const NewEntryForm = ({onSubmit, onCancel}: ModalFormProps) => {
 	const dispatch = useAppDispatch();
 	const { register, handleSubmit, setFocus, formState: { errors }} = useForm<NewEntryData>();
 
-	function withSubmit(data) {
+	function withSubmit(data: NewEntryData) {
 		const { title, url, chapter } = data;
 		const artUrl = data.artUrl || 'https://placehold.co/68x98';
 
