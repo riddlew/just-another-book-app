@@ -11,7 +11,7 @@ export const NewEntryForm = ({onSubmit, onCancel}: ModalFormProps) => {
 
 	function withSubmit(data: NewEntryData) {
 		const { title, url, chapter } = data;
-		const artUrl = data.artUrl || 'https://placehold.co/68x98';
+		const artUrl = data.artUrl || 'https://placehold.co/68x98?text=Cover%20Art';
 
 		console.log(data, artUrl);
 		const list = document.getElementById('list_selector') as HTMLSelectElement;
