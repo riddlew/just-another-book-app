@@ -7,6 +7,7 @@ import { updateEntryById } from '@/slices/entriesSlice'
 import { Entry } from "@/types";
 import { Modal } from "@/components/common/Modal";
 import { DeleteEntryConfirmationForm } from "@/components/forms/DeleteEntryConfirmationForm";
+import { motion } from 'framer-motion'
 
 export const BookEntry = ({
 	id,
@@ -63,7 +64,12 @@ export const BookEntry = ({
 	};
 
 	return (
-		<>
+		<motion.div
+			layout
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+		>
 			<div className="book-entry">
 				<div className="book-entry__art">
 					<img src={artUrl} alt="" />
@@ -170,6 +176,6 @@ export const BookEntry = ({
 					/>
 				</Modal>
 			}
-		</>
+		</motion.div>
 	)
 }
