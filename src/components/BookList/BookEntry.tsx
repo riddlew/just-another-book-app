@@ -76,10 +76,12 @@ export const BookEntry = ({
 		>
 			<div className="book-entry">
 				<div className="book-entry__art">
-					<img src={artUrl} alt="" />
+					<a href={url}>
+						<img src={artUrl} alt={`Cover art for ${title}`} />
+					</a>
 				</div>
 				<div className="book-entry__data">
-					<h2>{title}</h2>
+					<h2><a href={url}>{title}</a></h2>
 					<div className="book-entry__chapter-row">
 						<div className="book-entry__chapter-group">
 							<label>
