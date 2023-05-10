@@ -3,8 +3,10 @@ import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { DeleteListConfirmationForm } from "@/components/forms/DeleteListConfirmationForm";
 import ReactModal from "react-modal";
+import { useAppSelector } from "@/hooks";
 
 export const DeleteListButton = () => {
+	const currentList = useAppSelector(state => state.entries.currentList);
 	const [modalOpen, setModalOpen] = useState(false);
 
 	function openModal() {
@@ -19,7 +21,7 @@ export const DeleteListButton = () => {
 		<>
 			<button
 				type="button"
-				className="rounded-full bg-theme-red-100 text-white h-12 w-12 inline-flex justify-center items-center"
+				disabled={currentList === ''}
 				onClick={openModal}
 			>
 				<FontAwesomeIcon icon={faMinus} size="lg" />

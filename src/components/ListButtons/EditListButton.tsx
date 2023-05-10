@@ -7,6 +7,7 @@ import ReactModal from "react-modal";
 
 export const EditListButton = () => {
 	const lists = useAppSelector(state => state.entries.lists);
+	const currentList = useAppSelector(state => state.entries.currentList);
 	const [modalOpen, setModalOpen] = useState(false);
 
 	function getCurrentListTitle(): string {
@@ -27,7 +28,7 @@ export const EditListButton = () => {
 		<>
 			<button
 			type="button"
-			className="rounded-full bg-theme-gray-200 text-white h-12 w-12 inline-flex justify-center items-center"
+			disabled={currentList === ''}
 			onClick={openModal}
 			>
 			<FontAwesomeIcon icon={faPencil} />

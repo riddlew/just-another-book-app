@@ -3,8 +3,10 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react";
 import { NewEntryForm } from '@/components/forms/NewEntryForm'
 import ReactModal from 'react-modal';
+import { useAppSelector } from "@/hooks";
 
 export const NewButton = () => {
+	const currentList = useAppSelector(state => state.entries.currentList);
 	const [modalOpen, setModalOpen] = useState(false);
 
 	function openModal() {
@@ -20,6 +22,7 @@ export const NewButton = () => {
 			<div className="action-buttons">
 				<button
 					type="button"
+					disabled={currentList === ''}
 					className="action-buttons__new"
 					onClick={openModal}
 				>
