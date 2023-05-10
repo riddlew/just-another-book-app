@@ -9,6 +9,7 @@ import { DeleteEntryConfirmationForm } from "@/components/forms/DeleteEntryConfi
 import { motion } from 'framer-motion'
 import ReactModal from "react-modal";
 import { formatDistance } from "date-fns"
+import { EditEntryForm } from "../forms/EditEntryForm";
 
 export const BookEntry = ({
 	id,
@@ -19,7 +20,8 @@ export const BookEntry = ({
 	lastRead
 }: Entry) => {
 	const [editing, setEditing] = useState(false);
-	const [modalOpen, setModalOpen] = useState(false);
+	const [editModalOpen, setEditModalOpen] = useState(false);
+	const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 	const [chap, setChap] = useState<string|number>(chapter);
 	const dispatch = useAppDispatch();
 
@@ -60,12 +62,20 @@ export const BookEntry = ({
 		setChapter(id, Math.max(+chap - 1, 0));
 	}
 
+	const handleEdit = () => {
+		setEditModalOpen(true);
+	}
+
 	const handleDelete = () => {
-		setModalOpen(true);
+		setDeleteModalOpen(true);
 	};
 
+	function closeEditModal() {
+		setEditModalOpen(false);
+	}
+
 	function closeDeleteModal() {
-		setModalOpen(false);
+		setDeleteModalOpen(false);
 	}
 
 	function updateLastRead(
@@ -182,6 +192,7 @@ export const BookEntry = ({
 					<button
 						type="button"
 						className="book-entry__btn__edit"
+						onClick={handleEdit}
 					>
 						<FontAwesomeIcon icon={faPencil} size="lg" />
 						<span className="book-entry__btn__mobile-text">
@@ -201,7 +212,24 @@ export const BookEntry = ({
 				</div>
 			</div>
 			<ReactModal
-				isOpen={modalOpen}
+				isOpen={editModalOpen}
+				closeTimeoutMS={250}
+				contentLabel="Edit Entry"
+				overlayClassName="modal-backdrop"
+				className="modal"
+				onRequestClose={closeEditModal}
+				appElement={document.getElementById('modal-root') || undefined}
+				style={{ content: { width: '20rem' }}}
+			>
+				<EditEntryForm
+					onSubmit={closeEditModal}
+					onCancel={closeEditModal}
+					entryId={id}
+					entry={{ title, url, artUrl, chapter, lastRead }}
+				/>
+			</ReactModal>
+			<ReactModal
+				isOpen={deleteModalOpen}
 				closeTimeoutMS={250}
 				contentLabel="Delete List Confirmation Modal"
 				overlayClassName="modal-backdrop"

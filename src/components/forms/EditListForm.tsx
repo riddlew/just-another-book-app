@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import classnames from 'classnames'
-import { ListEditDeleteProps, ModalFormProps, NewEntryData } from '@/types';
+import { ListEditDeleteProps, ModalFormProps } from '@/types';
 import { useAppDispatch } from '@/hooks';
 import { editList } from '@/slices/entriesSlice';
 import { useEffect } from 'react';

@@ -21,13 +21,14 @@ export interface ModalProps {
 export interface ModalFormProps {
 	onSubmit?: () => void;
 	onCancel?: () => void;
+	entry?: Partial<EntryData>
 }
 
 export interface ListEditDeleteProps {
 	title: string;
 }
 
-export type NewEntryData = Pick<
+export type EntryData = Pick<
 	Entry,
 	'title' | 'url' | 'chapter' | 'artUrl' | 'lastRead'
 >
