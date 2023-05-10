@@ -2,6 +2,7 @@ import { BookEntry } from "./BookEntry"
 import { useAppSelector } from '@/hooks'
 
 export const BookList = () => {
+  const lists = useAppSelector(state => state.entries.lists);
 	const filtered = useAppSelector(state => state.entries.filtered);
 
 	return (
@@ -17,7 +18,7 @@ export const BookList = () => {
 					lastRead={entry.lastRead}
 				/>
 			))}
-			{filtered.length === 0 && (
+			{filtered.length === 0 && lists.length > 0 && (
 				<p className="text-center">Your list is empty!</p>
 			)}
 		</div>
