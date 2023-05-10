@@ -23,7 +23,7 @@ export const NewEntryForm = ({onSubmit, onCancel}: ModalFormProps) => {
 					url,
 					artUrl,
 					chapter,
-					lastRead: Date.now(),
+					lastRead: 0,
 				},
 			}))
 

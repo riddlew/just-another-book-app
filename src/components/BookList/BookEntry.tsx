@@ -8,6 +8,7 @@ import { Entry } from "@/types";
 import { DeleteEntryConfirmationForm } from "@/components/forms/DeleteEntryConfirmationForm";
 import { motion } from 'framer-motion'
 import ReactModal from "react-modal";
+import { formatDistance } from "date-fns"
 
 export const BookEntry = ({
 	id,
@@ -67,6 +68,22 @@ export const BookEntry = ({
 		setModalOpen(false);
 	}
 
+	function updateLastRead(
+		event: React.MouseEvent<HTMLAnchorElement>,
+		id: string,
+	) {
+		if (event.button === 0 || event.button === 1) {
+			dispatch(
+				updateEntryById({
+					id,
+					data: {
+						lastRead: Date.now(),
+					}
+				})
+			)
+		}
+	}
+
 	return (
 		<motion.div
 			layout
@@ -76,12 +93,26 @@ export const BookEntry = ({
 		>
 			<div className="book-entry">
 				<div className="book-entry__art">
-					<a href={url}>
+					<a
+						href={url}
+						target="_blank"
+						onClick={(event) => updateLastRead(event, id)}
+						onAuxClick={(event) => updateLastRead(event, id)}
+					>
 						<img src={artUrl} alt={`Cover art for ${title}`} />
 					</a>
 				</div>
 				<div className="book-entry__data">
-					<h2><a href={url}>{title}</a></h2>
+					<h2>
+						<a
+							href={url}
+							target="_blank"
+							onClick={(event) => updateLastRead(event, id)}
+							onAuxClick={(event) =>  updateLastRead(event, id)}
+						>
+							{title}
+						</a>
+					</h2>
 					<div className="book-entry__chapter-row">
 						<div className="book-entry__chapter-group">
 							<label>
@@ -143,7 +174,7 @@ export const BookEntry = ({
 						</div>
 
 						<span className="book-entry__last_read">
-							Last Read: <strong>2 days ago</strong>
+							Last Read: <strong>{formatDistance(lastRead, Date.now())} ago</strong>
 						</span>
 					</div>
 				</div>

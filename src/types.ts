@@ -29,7 +29,7 @@ export interface ListEditDeleteProps {
 
 export type NewEntryData = Pick<
 	Entry,
-	'title' | 'url' | 'chapter' | 'artUrl'
+	'title' | 'url' | 'chapter' | 'artUrl' | 'lastRead'
 >
 
 export interface NewEntry {
