@@ -167,13 +167,15 @@ export const entriesSlice = createSlice({
 				toast.error(<div>Unable to delete list <strong>{action.payload}</strong></div>);
 			}
 
-			state.lists = state.lists.filter(list => list.slug !== action.payload);
+			entriesSlice.caseReducers.loadLists(state);
 
 			// Load a different list
 			entriesSlice.caseReducers.loadList(state, {
 				type: 'removeList',
 				payload: state.lists[0].slug,
 			});
+
+			state.lists = state.lists.filter(list => list.slug !== action.payload);
 		},
 		setKeywords: (state, action: PayloadAction<string>) => {
 			state.keywords = action.payload;

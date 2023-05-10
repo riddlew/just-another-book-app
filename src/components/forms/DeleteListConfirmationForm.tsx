@@ -7,7 +7,8 @@ export const DeleteListConfirmationForm = ({onSubmit, onCancel}: ModalFormProps)
 	const dispatch = useAppDispatch();
 	const deleteBtnRef = useRef<HTMLButtonElement>(null);
 
-	function handleSubmit() {
+	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+		event.preventDefault();
 		const list = document.getElementById('list_selector') as HTMLSelectElement;
 		dispatch(removeList(list.value));
 		onSubmit && onSubmit();

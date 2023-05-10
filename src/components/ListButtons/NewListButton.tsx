@@ -1,32 +1,43 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { Modal } from "@/components/common/Modal";
 import { NewListForm } from "@/components/forms/NewListForm";
+import ReactModal from "react-modal";
 
 export const NewListButton = () => {
-	const [newModalOpen, setNewModalOpen] = useState(false);
+	const [modalOpen, setModalOpen] = useState(false);
+
+	function openModal() {
+		setModalOpen(true);
+	}
+
+	function closeModal() {
+		setModalOpen(false);
+	}
 
 	return (
 		<>
 			<button
 				type="button"
 				className="rounded-full bg-theme-green-100 text-white h-12 w-12 inline-flex justify-center items-center"
-				onClick={() => setNewModalOpen(true)}
+				onClick={openModal}
 			>
 				<FontAwesomeIcon icon={faPlus} size="lg" />
 			</button>
-			{newModalOpen &&
-				<Modal
-					width="20rem"
-					onClose={() => setNewModalOpen(false)}
-				>
-					<NewListForm
-						onSubmit={() => setNewModalOpen(false)}
-						onCancel={() => setNewModalOpen(false)}
-					/>
-				</Modal>
-			}
+			<ReactModal
+				isOpen={modalOpen}
+				closeTimeoutMS={250}
+				contentLabel="New List Modal"
+				overlayClassName="modal-backdrop"
+				className="modal"
+				onRequestClose={closeModal}
+				appElement={document.getElementById('modal-root') || undefined}
+			>
+				<NewListForm
+					onSubmit={() => setModalOpen(false)}
+					onCancel={() => setModalOpen(false)}
+				/>
+			</ReactModal>
 		</>
 	);
 }

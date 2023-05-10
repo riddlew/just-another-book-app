@@ -5,9 +5,9 @@ import classnames from "classnames";
 import { useAppDispatch } from '@/hooks'
 import { updateEntryById } from '@/slices/entriesSlice'
 import { Entry } from "@/types";
-import { Modal } from "@/components/common/Modal";
 import { DeleteEntryConfirmationForm } from "@/components/forms/DeleteEntryConfirmationForm";
 import { motion } from 'framer-motion'
+import ReactModal from "react-modal";
 
 export const BookEntry = ({
 	id,
@@ -18,7 +18,7 @@ export const BookEntry = ({
 	lastRead
 }: Entry) => {
 	const [editing, setEditing] = useState(false);
-	const [deleteConfirmModalOpen, setDeleteConfirmModalOpen] = useState(false);
+	const [modalOpen, setModalOpen] = useState(false);
 	const [chap, setChap] = useState<string|number>(chapter);
 	const dispatch = useAppDispatch();
 
@@ -60,8 +60,12 @@ export const BookEntry = ({
 	}
 
 	const handleDelete = () => {
-		setDeleteConfirmModalOpen(true);
+		setModalOpen(true);
 	};
+
+	function closeDeleteModal() {
+		setModalOpen(false);
+	}
 
 	return (
 		<motion.div
@@ -163,19 +167,23 @@ export const BookEntry = ({
 					</button>
 				</div>
 			</div>
-			{deleteConfirmModalOpen &&
-				<Modal
-					width="20rem"
-					onClose={() => setDeleteConfirmModalOpen(false)}
-				>
-					<DeleteEntryConfirmationForm
-						onSubmit={() => setDeleteConfirmModalOpen(false)}
-						onCancel={() => setDeleteConfirmModalOpen(false)}
-						entryId={id}
-						entryName={title}
-					/>
-				</Modal>
-			}
+			<ReactModal
+				isOpen={modalOpen}
+				closeTimeoutMS={250}
+				contentLabel="Delete List Confirmation Modal"
+				overlayClassName="modal-backdrop"
+				className="modal"
+				onRequestClose={closeDeleteModal}
+				appElement={document.getElementById('modal-root') || undefined}
+				style={{ content: { width: '20rem' }}}
+			>
+				<DeleteEntryConfirmationForm
+					onSubmit={closeDeleteModal}
+					onCancel={closeDeleteModal}
+					entryId={id}
+					entryName={title}
+				/>
+			</ReactModal>
 		</motion.div>
 	)
 }
