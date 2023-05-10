@@ -95,7 +95,7 @@ export const entriesSlice = createSlice({
 			} else {
 				state.currentList = '';
 				state.list = state.filtered = [];
-				toast.error(<div>Failed to load the selected list <strong>${action.payload}</strong></div>);
+				toast.error(<div>Failed to load the selected list <strong>{action.payload}</strong></div>);
 				console.error(`Failed to load the selected list "${action.payload}"`)
 			}
 		},
@@ -107,7 +107,6 @@ export const entriesSlice = createSlice({
 			if (currIdx) {
 				const listData = state.lists[currIdx]
 				const data = loadListFromStorage(listData.slug);
-				console.log(data);
 
 				if (data) {
 					const newSlug = action.payload.name.replaceAll(' ', '_').toLowerCase();
@@ -170,12 +169,16 @@ export const entriesSlice = createSlice({
 			entriesSlice.caseReducers.loadLists(state);
 
 			// Load a different list
-			entriesSlice.caseReducers.loadList(state, {
-				type: 'removeList',
-				payload: state.lists[0].slug,
-			});
+			if (state.lists.length > 0) {
+				entriesSlice.caseReducers.loadList(state, {
+					type: 'removeList',
+					payload: state.lists[0].slug,
+				});
 
-			state.lists = state.lists.filter(list => list.slug !== action.payload);
+				state.lists = state.lists.filter(list => list.slug !== action.payload);
+			} else {
+				state.list = state.filtered = [];
+			}
 		},
 		setKeywords: (state, action: PayloadAction<string>) => {
 			state.keywords = action.payload;

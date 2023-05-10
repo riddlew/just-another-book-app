@@ -50,9 +50,7 @@ export function deleteListFromStorage(name: string) {
 
 export function addListToStorage(name: string, slug: string, opts?: AddListToStorageOpts) {
 	const listsStr = localStorage.getItem('keys');
-	if (!listsStr) return false;
-
-	const lists: List[] = JSON.parse(listsStr);
+	const lists: List[] = JSON.parse(listsStr || '[]');
 
 	if (opts && opts.index) {
 		lists.splice(opts.index, 0, {name, slug})
