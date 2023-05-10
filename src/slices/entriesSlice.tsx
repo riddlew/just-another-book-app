@@ -178,6 +178,7 @@ export const entriesSlice = createSlice({
 				state.lists = state.lists.filter(list => list.slug !== action.payload);
 			} else {
 				state.list = state.filtered = [];
+				state.currentList = '';
 			}
 		},
 		setKeywords: (state, action: PayloadAction<string>) => {

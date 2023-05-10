@@ -41,6 +41,7 @@ export function deleteListFromStorage(name: string) {
 	if (keyIdx > -1) {
 		localStorage.removeItem(lists[keyIdx].slug);
 		lists.splice(keyIdx, 1);
+		localStorage.setItem('currentList', '');
 		localStorage.setItem('keys', JSON.stringify(lists));
 		return true;
 	}
