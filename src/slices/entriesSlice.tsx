@@ -40,6 +40,10 @@ export const entriesSlice = createSlice({
 					...action.payload.data
 				}
 			}
+
+			if(!saveListToStorage(state.currentList, state.list)) {
+				toast.error('Error occurred while saving the list');
+			}
 		},
 		filterEntries: (state, action: PayloadAction<string>) => {
 			const keywords = action.payload.trim();
