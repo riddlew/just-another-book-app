@@ -19,7 +19,7 @@ export const NewListButton = () => {
 		<>
 			<button
 				type="button"
-				className="rounded-full bg-theme-green-100 text-white h-12 w-12 inline-flex justify-center items-center"
+				className="btn-circle btn-circle--green"
 				onClick={openModal}
 			>
 				<FontAwesomeIcon icon={faPlus} size="lg" />

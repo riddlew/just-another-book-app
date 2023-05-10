@@ -29,6 +29,7 @@ export const EditListButton = () => {
 			<button
 			type="button"
 			disabled={currentList === ''}
+			className="btn-circle"
 			onClick={openModal}
 			>
 			<FontAwesomeIcon icon={faPencil} />

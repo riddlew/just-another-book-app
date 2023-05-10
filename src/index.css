@@ -34,6 +34,30 @@ textarea:focus {
 	opacity: 0;
 }
 
+.btn-circle {
+	@apply
+		rounded-full
+		bg-theme-gray-200
+		text-white
+		h-12
+		w-12
+		inline-flex
+		justify-center
+		items-center;
+}
+
+.btn-circle:disabled {
+	@apply bg-theme-gray-200 opacity-50 !important;
+}
+
+.btn-circle--red {
+	@apply bg-theme-red-100;
+}
+
+.btn-circle--green {
+	@apply bg-theme-green-100;
+}
+
 .modal-backdrop {
 	background-color: rgba(0, 0, 0, 0.5);
 	position: fixed;
@@ -192,6 +216,9 @@ textarea:focus {
 		text-white
 		py-2.5
 		px-5;
+}
+.action-buttons__new:disabled {
+	@apply bg-theme-gray-200 opacity-50;
 }
 
 .book-entry {

@@ -22,6 +22,7 @@ export const DeleteListButton = () => {
 			<button
 				type="button"
 				disabled={currentList === ''}
+				className="btn-circle btn-circle--red"
 				onClick={openModal}
 			>
 				<FontAwesomeIcon icon={faMinus} size="lg" />
