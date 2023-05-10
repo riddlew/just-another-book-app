@@ -104,13 +104,14 @@ export const entriesSlice = createSlice({
 		},
 		editList: (state, action: PayloadAction<List>) => {
 			const currIdx = state.lists.findIndex(l => l.slug === action.payload.slug);
-			if (currIdx) {
+			const newSlug = action.payload.name.replaceAll(' ', '_').toLowerCase();
+			state.currentList = newSlug;
+
+			if (currIdx > -1) {
 				const listData = state.lists[currIdx]
 				const data = loadListFromStorage(listData.slug);
 
 				if (data) {
-					const newSlug = action.payload.name.replaceAll(' ', '_').toLowerCase();
-
 					deleteListFromStorage(listData.slug)
 					addListToStorage(
 						action.payload.name,
@@ -124,14 +125,14 @@ export const entriesSlice = createSlice({
 						name: action.payload.name,
 						slug: newSlug,
 					};
-					state.currentList = newSlug;
 					entriesSlice.caseReducers.loadList(state, {
 						type: 'removeList',
 						payload: newSlug,
 					});
 
-					toast.success(<div>List <strong>{listData.name}</strong> has been renamed to <strong>{action.payload.name}</strong></div>);
 				}
+
+				toast.success(<div>List <strong>{listData.name}</strong> has been renamed to <strong>{action.payload.name}</strong></div>);
 			}
 		},
 		// removeBookById: (state, payload) => {
