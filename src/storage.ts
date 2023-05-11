@@ -76,3 +76,7 @@ export function getCurrentListFromStorage() {
 export function saveCurrentListToStorage(slug: string) {
 	localStorage.setItem('currentList', slug);
 }
+
+export function exportStorage() {
+	return {...localStorage};
+}

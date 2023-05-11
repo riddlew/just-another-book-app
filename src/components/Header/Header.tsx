@@ -1,3 +1,4 @@
+import { ExportBtn } from "./ExportBtn";
 import { WhatIsThisBtn } from "./WhatIsThisBtn";
 
 export const Header = () => {
@@ -6,12 +7,7 @@ export const Header = () => {
 			<div className="container mx-auto px-0">
 				<ul className="flex flex-col sm:flex-row justify-center items-center">
 					<li className="block w-full">
-						<button
-							type="button"
-							className="transition-colors block w-full sm:inline-block sm:px-2 py-4 font-bold hover:bg-theme-purple-200"
-						>
-							Manage
-						</button>
+						<ExportBtn />
 					</li>
 					<li className="block w-full">
 						<button
