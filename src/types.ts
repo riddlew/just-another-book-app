@@ -44,6 +44,7 @@ export interface EntriesSliceState {
 	currentList: string;
 	filtered: Entry[];
 	keywords: string;
+	listIndex: number;
 }
 
 export interface EntriesSliceUpdateData {

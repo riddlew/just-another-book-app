@@ -21,6 +21,7 @@ const initialState: EntriesSliceState = {
 	list: [],
 	filtered: [],
 	keywords: '',
+	listIndex: -1,
 };
 
 export const entriesSlice = createSlice({
@@ -103,6 +104,8 @@ export const entriesSlice = createSlice({
 				toast.error(<div>Failed to load the selected list <strong>{action.payload}</strong></div>);
 				console.error(`Failed to load the selected list "${action.payload}"`)
 			}
+
+			state.listIndex = -1;
 		},
 		loadLists: (state) => {
 			state.lists = getListsFromStorage();
@@ -201,6 +204,16 @@ export const entriesSlice = createSlice({
 				payload: '',
 			});
 		},
+		updateListIndex: (state, action: PayloadAction<number>) => {
+			console.log(action.payload);
+			if (action.payload >= state.filtered.length) {
+				state.listIndex = 0;
+			} else if (action.payload < 0) {
+				state.listIndex = state.filtered.length - 1;
+			} else {
+				state.listIndex = action.payload;
+			}
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(importDataAsync.fulfilled, (state, action) => {
@@ -232,6 +245,7 @@ export const {
 	removeList,
 	setKeywords,
 	clearKeywords,
+	updateListIndex,
 } = entriesSlice.actions;
 
 export const selectEntriesList = (state: RootState) => state.entries.list.values;

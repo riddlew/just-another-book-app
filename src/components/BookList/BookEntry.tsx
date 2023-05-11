@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import classnames from "classnames";
 import { useAppDispatch } from '@/hooks'
-import { updateEntryById } from '@/slices/entriesSlice'
+import { updateEntryById, updateListIndex } from '@/slices/entriesSlice'
 import { Entry } from "@/types";
 import { DeleteEntryConfirmationForm } from "@/components/forms/DeleteEntryConfirmationForm";
 import { motion } from 'framer-motion'
@@ -17,8 +17,10 @@ export const BookEntry = ({
 	url,
 	artUrl,
 	chapter,
-	lastRead
-}: Entry) => {
+	lastRead,
+	refCB,
+	index,
+}: Entry & { refCB: (el: HTMLInputElement) => void, index: number }) => {
 	const [editing, setEditing] = useState(false);
 	const [editModalOpen, setEditModalOpen] = useState(false);
 	const [deleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -44,6 +46,7 @@ export const BookEntry = ({
 	const handleChapterFocus = (event: React.FocusEvent<HTMLInputElement>) => {
 		event.preventDefault();
 		setEditing(true);
+		dispatch(updateListIndex(index));
 	}
 
 	const handleChapterBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -93,6 +96,10 @@ export const BookEntry = ({
 			)
 		}
 	}
+
+	useEffect(() => {
+		setChap(chapter);
+	}, [chapter])
 
 	return (
 		<motion.div
@@ -146,6 +153,7 @@ export const BookEntry = ({
 										}
 									)}
 									type="text"
+									ref={refCB}
 									size={4}
 									value={chap}
 									onChange={handleChapterChange}
