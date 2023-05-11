@@ -1,4 +1,5 @@
 import { ExportBtn } from "./ExportBtn";
+import { ImportBtn } from "./ImportBtn";
 import { WhatIsThisBtn } from "./WhatIsThisBtn";
 
 export const Header = () => {
@@ -10,20 +11,7 @@ export const Header = () => {
 						<ExportBtn />
 					</li>
 					<li className="block w-full">
-						<button
-							type="button"
-							className="transition-colors block w-full sm:inline-block sm:px-2 py-4 font-bold hover:bg-theme-purple-200"
-						>
-							Export
-						</button>
-					</li>
-					<li className="block w-full">
-						<button
-							type="button"
-							className="transition-colors block w-full sm:inline-block sm:px-2 py-4 font-bold hover:bg-theme-purple-200"
-						>
-							Import
-						</button>
+						<ImportBtn />
 					</li>
 					<li className="block w-full">
 						<WhatIsThisBtn />

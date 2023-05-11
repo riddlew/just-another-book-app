@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@/store'
 import { EntriesSliceState, EntriesSliceUpdateData, List, NewEntry } from '@/types';
@@ -9,7 +9,8 @@ import {
 	loadListFromStorage,
 	saveListToStorage,
 	getCurrentListFromStorage,
-	saveCurrentListToStorage
+	saveCurrentListToStorage,
+	importStorage
 } from '@/storage';
 import {v4 as uuidv4} from 'uuid'
 import toast from 'react-hot-toast'
@@ -199,9 +200,25 @@ export const entriesSlice = createSlice({
 				type: 'filterEntries',
 				payload: '',
 			});
-		}
+		},
 	},
+	extraReducers: (builder) => {
+		builder.addCase(importDataAsync.fulfilled, (state, action) => {
+			entriesSlice.caseReducers.loadLists(state);
+			entriesSlice.caseReducers.loadList(state, {
+				type: 'loadList',
+				payload: state.lists[0].slug,
+			});
+		});
+	}
 });
+
+export const importDataAsync = createAsyncThunk(
+	'entries/importData',
+	async(data: string, thunkAPI) => {
+		await importStorage(data);
+	}
+)
 
 export const {
 	updateEntryById,

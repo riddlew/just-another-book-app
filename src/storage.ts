@@ -80,3 +80,10 @@ export function saveCurrentListToStorage(slug: string) {
 export function exportStorage() {
 	return {...localStorage};
 }
+
+export async function importStorage(contents: string) {
+	const data = JSON.parse(await contents);
+	for(const key of Object.keys(data)) {
+		localStorage.setItem(key, data[key]);
+	}
+}
