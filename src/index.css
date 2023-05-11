@@ -106,9 +106,9 @@ textarea:focus {
 		sm:grid-cols-modal-shortcuts;
 }
 
-.modal .keybind .key {
+.modal .keybind .key,
+.modal .inline-key {
 	@apply
-		flex
 		justify-center
 		items-center
 		w-10
@@ -118,6 +118,16 @@ textarea:focus {
 		rounded-md
 		mx-auto
 		sm:mx-0;
+}
+
+.modal .keybind .key {
+	@apply flex;
+}
+
+.modal .inline-key {
+	@apply
+		inline-flex
+		mx-1;
 }
 
 .modal .keybind span {

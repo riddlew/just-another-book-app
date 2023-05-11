@@ -30,25 +30,28 @@ export const WhatIsThisModal = ({onCancel}: ModalFormProps) => {
 				</p>
 				<p>
 					This tracker bypasses that tedious process. To move between list
-					entries, you can use the up and down arrows, and use the left and right
-					arrows to decrease and increase the chapter numbers. You will still have
-					the option to type in the number yourself if you want. Once you move to
-					the next list entry, the previous entry's information will be saved.
+					entries, you can use the <span className="inline-key">J</span> and
+					<span className="inline-key">K</span> keys, and use the
+					<span className="inline-key">H</span> and
+					<span className="inline-key">L</span> keys to decrease and increase
+					the chapter numbers. You will still have the option to type in the
+					number yourself if you want. Once you move to the next list entry,
+					the previous entry's information will be saved. <strong>These
+					shortcuts only work when the chapter textboxes are selected.</strong>
 				</p>
 				<h3>What are the shortcuts?</h3>
 				<ul>
 					<li className="keybind">
-						<span className="key" aria-label="Up Arrow Key">
-							<FontAwesomeIcon icon={faArrowUp} size="lg" />
+						<span className="key" aria-label="H Key">
+							H
 						</span>
 						<p>
-							Move to the previous entry in the list, or move to the end of the
-							list if you are curently at the beginning.
+							Decrease the chapter of the current entry by 1.
 						</p>
 					</li>
 					<li className="keybind">
-						<span className="key" aria-label="Down Arrow Key">
-							<FontAwesomeIcon icon={faArrowDown} size="lg" />
+						<span className="key" aria-label="J Key">
+							J
 						</span>
 						<p>
 							Move to the next entry in the list, or move to the beginning of
@@ -56,16 +59,17 @@ export const WhatIsThisModal = ({onCancel}: ModalFormProps) => {
 						</p>
 					</li>
 					<li className="keybind">
-						<span className="key" aria-label="Left Arrow Key">
-							<FontAwesomeIcon icon={faArrowLeft} size="lg" />
+						<span className="key" aria-label="K Key">
+							K
 						</span>
 						<p>
-							Decrease the chapter of the current entry by 1.
+							Move to the previous entry in the list, or move to the end of the
+							list if you are curently at the beginning.
 						</p>
 					</li>
 					<li className="keybind">
-						<span className="key" aria-label="Right Arrow Key">
-							<FontAwesomeIcon icon={faArrowRight} size="lg" />
+						<span className="key" aria-label="L Key">
+							L
 						</span>
 						<p>
 							Increase the chapter of the current entry by 1.
