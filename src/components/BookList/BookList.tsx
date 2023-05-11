@@ -16,56 +16,50 @@ export const BookList = () => {
 		}
 	}, [navIndex]);
 
-	useEffect(() => {
-		function handleKey(event: KeyboardEvent) {
-			if (
-				event.key === 'ArrowDown' ||
-				event.key === 'ArrowUp' ||
-				event.key === 'ArrowLeft' ||
-				event.key === 'ArrowRight'
-			) {
-				event.preventDefault();
-				event.stopPropagation();
-			}
+	function handleKey(event: KeyboardEvent) {
+		if (
+			event.key === 'j' ||
+			event.key === 'k' ||
+			event.key === 'h' ||
+			event.key === 'l'
+		) {
+			event.preventDefault();
+			event.stopPropagation();
+		}
 
-			switch(event.key) {
-				case 'ArrowDown': {
-					dispatch(updateListIndex(navIndex + 1));
-					break;
-				}
-				case 'ArrowUp': {
-					dispatch(updateListIndex(navIndex - 1));
-					break;
-				}
-				case 'ArrowLeft': {
-					dispatch(
-						updateEntryById({
-							id: filtered[navIndex].id,
-							data: {
-								chapter: Math.max(filtered[navIndex].chapter - 1, 0),
-							}
-						})
-					)
-					break;
-				}
-				case 'ArrowRight': {
-					dispatch(
-						updateEntryById({
-							id: filtered[navIndex].id,
-							data: {
-								chapter: Math.max(filtered[navIndex].chapter + 1, 0),
-							}
-						})
-					)
-					break;
-				}
+		switch(event.key) {
+			case 'j': {
+				dispatch(updateListIndex(navIndex + 1));
+				break;
+			}
+			case 'k': {
+				dispatch(updateListIndex(navIndex - 1));
+				break;
+			}
+			case 'h': {
+				dispatch(
+					updateEntryById({
+						id: filtered[navIndex].id,
+						data: {
+							chapter: Math.max(filtered[navIndex].chapter - 1, 0),
+						}
+					})
+				)
+				break;
+			}
+			case 'l': {
+				dispatch(
+					updateEntryById({
+						id: filtered[navIndex].id,
+						data: {
+							chapter: Math.max(filtered[navIndex].chapter + 1, 0),
+						}
+					})
+				)
+				break;
 			}
 		}
-		document.addEventListener('keydown', handleKey);
-		return () => {
-			document.removeEventListener('keydown', handleKey);
-		}
-	}, [dispatch, navIndex, filtered])
+	}
 
 	return (
 		<div className="book-list">
@@ -80,6 +74,7 @@ export const BookList = () => {
 					artUrl={entry.artUrl}
 					chapter={entry.chapter}
 					lastRead={entry.lastRead}
+					onKeyDown={handleKey}
 				/>
 			))}
 			{filtered.length === 0 && lists.length > 0 && (

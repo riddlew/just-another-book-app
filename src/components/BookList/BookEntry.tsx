@@ -20,7 +20,12 @@ export const BookEntry = ({
 	lastRead,
 	refCB,
 	index,
-}: Entry & { refCB: (el: HTMLInputElement) => void, index: number }) => {
+	onKeyDown,
+}: Entry & {
+	refCB: (el: HTMLInputElement) => void,
+	index: number,
+	onKeyDown: (event: KeyboardEvent) => void,
+}) => {
 	const [editing, setEditing] = useState(false);
 	const [editModalOpen, setEditModalOpen] = useState(false);
 	const [deleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -159,6 +164,7 @@ export const BookEntry = ({
 									onChange={handleChapterChange}
 									onFocus={handleChapterFocus}
 									onBlur={handleChapterBlur}
+									onKeyDown={onKeyDown}
 								/>
 							</label>
 							<button
