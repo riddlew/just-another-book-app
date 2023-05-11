@@ -15,6 +15,7 @@ export default {
 				'theme-gray': {
 					100: '#a8a8a8',
 					200: '#737373',
+					300: '#333333',
 				},
 				'theme-red': {
 					50: '#ff6a92',
@@ -23,6 +24,9 @@ export default {
 				'theme-green': {
 					100: '#48b053',
 				}
+			},
+			gridTemplateColumns: {
+				'modal-shortcuts': '4.0rem 1fr',
 			},
 		},
 		container: {

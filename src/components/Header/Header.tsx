@@ -1,3 +1,5 @@
+import { WhatIsThisBtn } from "./WhatIsThisBtn";
+
 export const Header = () => {
 	return (
 		<div className="bg-theme-purple-300 text-white">
@@ -28,12 +30,7 @@ export const Header = () => {
 						</button>
 					</li>
 					<li className="block w-full">
-						<button
-							type="button"
-							className="transition-colors block w-full sm:inline-block sm:px-2 py-4 font-bold hover:bg-theme-purple-200"
-						>
-							What is this?
-						</button>
+						<WhatIsThisBtn />
 					</li>
 				</ul>
 			</div>

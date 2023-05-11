@@ -72,8 +72,10 @@ textarea:focus {
 		rounded-lg
 		bg-white
 		p-5
-		min-w-[20rem]
-		min-h-0;
+		min-w-[10rem]
+		min-h-0
+		text-center
+		sm:text-left;
 }
 
 .modal h2 {
@@ -81,6 +83,49 @@ textarea:focus {
 		text-center
 		text-xl
 		font-bold;
+}
+
+.modal h3 {
+	@apply
+		text-lg
+		font-bold
+		mt-5;
+}
+
+.modal p,
+.modal ul li {
+	@apply mt-2.5 leading-7;
+}
+
+.modal .keybind {
+	@apply
+		grid
+		items-center
+		justify-center
+		grid-cols-1
+		sm:grid-cols-modal-shortcuts;
+}
+
+.modal .keybind .key {
+	@apply
+		flex
+		justify-center
+		items-center
+		w-10
+		h-10
+		bg-theme-gray-300
+		text-white
+		rounded-md
+		mx-auto
+		sm:mx-0;
+}
+
+.modal .keybind span {
+	@apply block;
+}
+
+.modal .keybind p {
+	@apply mt-0;
 }
 
 .modal input {
