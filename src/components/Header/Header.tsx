@@ -16,6 +16,14 @@ export const Header = () => {
 					<li className="block w-full">
 						<WhatIsThisBtn />
 					</li>
+					<li className="block w-full">
+						<a
+							href="https://www.github.com/riddlew/libro-list"
+							className="transition-colors block w-full sm:inline-block sm:px-2 py-4 font-bold hover:bg-theme-purple-200 text-center"
+						>
+							View on GitHub
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
