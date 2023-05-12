@@ -8,7 +8,6 @@ export const DeleteEntryConfirmationForm = ({onSubmit, onCancel, entryId, entryN
 	const deleteBtnRef = useRef<HTMLButtonElement>(null);
 
 	function handleSubmit() {
-		console.log(entryId);
 		dispatch(removeEntry(entryId));
 		onSubmit && onSubmit();
 	}

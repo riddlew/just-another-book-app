@@ -212,7 +212,6 @@ export const entriesSlice = createSlice({
 			});
 		},
 		updateListIndex: (state, action: PayloadAction<number>) => {
-			console.log(action.payload);
 			if (action.payload >= state.filtered.length) {
 				state.listIndex = 0;
 			} else if (action.payload < 0) {

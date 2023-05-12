@@ -10,8 +10,6 @@ export const ImportDragDrop = ({onImport}: ImportDragDropProps) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const handleFileData = (file: File) => {
-		console.log('handleFileData');
-		console.log(file);
 		if (file.type !== 'application/json') {
 			setValidFileType(false);
 		} else {

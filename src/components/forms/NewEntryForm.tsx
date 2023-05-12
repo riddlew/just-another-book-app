@@ -13,7 +13,6 @@ export const NewEntryForm = ({onSubmit, onCancel}: ModalFormProps) => {
 		const { title, url, chapter } = data;
 		const artUrl = data.artUrl || 'https://placehold.co/68x98?text=Cover%20Art';
 
-		console.log(data, artUrl);
 		const list = document.getElementById('list_selector') as HTMLSelectElement;
 		if (list) {
 			dispatch(addEntry({

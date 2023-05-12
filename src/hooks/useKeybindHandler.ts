@@ -35,8 +35,6 @@ export const useKeybindHandler = () => {
 			event.stopPropagation();
 		}
 
-		console.log(entryRefs);
-
 		switch(event.key) {
 			case 'j': {
 				dispatch(updateListIndex(navIndex + 1));
