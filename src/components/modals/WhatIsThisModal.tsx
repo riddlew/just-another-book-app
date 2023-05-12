@@ -36,8 +36,7 @@ export const WhatIsThisModal = ({onCancel}: ModalFormProps) => {
 					<span className="inline-key">L</span> keys to decrease and increase
 					the chapter numbers. You will still have the option to type in the
 					number yourself if you want. Once you move to the next list entry,
-					the previous entry's information will be saved. <strong>These
-					shortcuts only work when the chapter textboxes are selected.</strong>
+					the previous entry's information will be saved.
 				</p>
 				<h3>What are the shortcuts?</h3>
 				<ul>

@@ -1,12 +1,22 @@
 import { useState } from "react";
 import ReactModal from "react-modal";
 import { ExportModal } from "@/components/modals/ExportModal";
+import { useAppDispatch } from "@/hooks";
+import { setKeybindsActive } from "@/slices/entriesSlice";
 
 export const ExportBtn = () => {
+	const dispatch = useAppDispatch();
 	const [modalOpen, setModalOpen] = useState(false);
 
-	const openModal = () => setModalOpen(true);
-	const closeModal = () => setModalOpen(false);
+	const openModal = () => {
+		setModalOpen(true);
+		dispatch(setKeybindsActive(false));
+	}
+
+	const closeModal = () => {
+		setModalOpen(false);
+		dispatch(setKeybindsActive(true));
+	}
 
 	return (
 		<>

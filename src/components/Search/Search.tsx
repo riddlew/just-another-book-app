@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { clearKeywords, setKeywords } from "@/slices/entriesSlice";
+import { clearKeywords, setKeybindsActive, setKeywords } from "@/slices/entriesSlice";
 import { NewListButton } from "@/components/ListButtons/NewListButton";
 import { EditListButton } from "@/components/ListButtons/EditListButton";
 import { DeleteListButton } from "@/components/ListButtons/DeleteListButton";
@@ -49,12 +49,13 @@ export const Search = () => {
 			</div>
 			{visible && (
 				<input
-					ref={(ref) => ref?.focus()}
 					type="text"
 					value={keywords}
 					className="search__input"
 					onChange={handleFilter}
 					onKeyUp={handleKeyUp}
+					onFocus={() => dispatch(setKeybindsActive(false))}
+					onBlur={() => dispatch(setKeybindsActive(true))}
 				/>
 			)}
 		</div>

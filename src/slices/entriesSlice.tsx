@@ -22,6 +22,7 @@ const initialState: EntriesSliceState = {
 	filtered: [],
 	keywords: '',
 	listIndex: -1,
+	keybindsActive: true,
 };
 
 export const entriesSlice = createSlice({
@@ -215,6 +216,9 @@ export const entriesSlice = createSlice({
 				state.listIndex = action.payload;
 			}
 		},
+		setKeybindsActive: (state, action: PayloadAction<boolean>) => {
+			state.keybindsActive = action.payload;
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(importDataAsync.fulfilled, (state, action) => {
@@ -247,6 +251,7 @@ export const {
 	setKeywords,
 	clearKeywords,
 	updateListIndex,
+	setKeybindsActive,
 } = entriesSlice.actions;
 
 export const selectEntriesList = (state: RootState) => state.entries.list.values;

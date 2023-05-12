@@ -3,7 +3,7 @@ import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { useEffect, useState } from "react"
 import classnames from "classnames";
 import { useAppDispatch } from '@/hooks'
-import { updateEntryById, updateListIndex } from '@/slices/entriesSlice'
+import { setKeybindsActive, updateEntryById, updateListIndex } from '@/slices/entriesSlice'
 import { Entry } from "@/types";
 import { DeleteEntryConfirmationForm } from "@/components/forms/DeleteEntryConfirmationForm";
 import { motion } from 'framer-motion'
@@ -20,11 +20,9 @@ export const BookEntry = ({
 	lastRead,
 	refCB,
 	index,
-	onKeyDown,
 }: Entry & {
 	refCB: (el: HTMLInputElement) => void,
 	index: number,
-	onKeyDown: (event: KeyboardEvent) => void,
 }) => {
 	const [editing, setEditing] = useState(false);
 	const [editModalOpen, setEditModalOpen] = useState(false);
@@ -72,18 +70,22 @@ export const BookEntry = ({
 
 	const handleEdit = () => {
 		setEditModalOpen(true);
+		dispatch(setKeybindsActive(false));
 	}
 
 	const handleDelete = () => {
 		setDeleteModalOpen(true);
+		dispatch(setKeybindsActive(false));
 	};
 
 	function closeEditModal() {
 		setEditModalOpen(false);
+		dispatch(setKeybindsActive(true));
 	}
 
 	function closeDeleteModal() {
 		setDeleteModalOpen(false);
+		dispatch(setKeybindsActive(true));
 	}
 
 	function updateLastRead(
@@ -164,7 +166,6 @@ export const BookEntry = ({
 									onChange={handleChapterChange}
 									onFocus={handleChapterFocus}
 									onBlur={handleChapterBlur}
-									onKeyDown={onKeyDown}
 								/>
 							</label>
 							<div className="book-entry__chapter-btn-row">

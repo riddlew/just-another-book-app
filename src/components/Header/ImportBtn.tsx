@@ -2,12 +2,22 @@ import { useState } from "react";
 import ReactModal from "react-modal";
 import { ImportModal } from "@/components/modals/ImportModal";
 import toast from 'react-hot-toast'
+import { setKeybindsActive } from "@/slices/entriesSlice";
+import { useAppDispatch } from "@/hooks";
 
 export const ImportBtn = () => {
+	const dispatch = useAppDispatch();
 	const [modalOpen, setModalOpen] = useState(false);
 
-	const openModal = () => setModalOpen(true);
-	const closeModal = () => setModalOpen(false);
+	const openModal = () => {
+		setModalOpen(true);
+		dispatch(setKeybindsActive(false));
+	}
+
+	const closeModal = () => {
+		setModalOpen(false);
+		dispatch(setKeybindsActive(true));
+	}
 
 	const finishImport = () => {
 		closeModal();
