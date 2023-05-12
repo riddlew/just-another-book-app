@@ -1,6 +1,6 @@
-import { ExportBtn } from "./ExportBtn";
-import { ImportBtn } from "./ImportBtn";
-import { WhatIsThisBtn } from "./WhatIsThisBtn";
+import { ExportBtn } from "@/components/Header/ExportBtn";
+import { ImportBtn } from "@/components/Header/ImportBtn";
+import { WhatIsThisBtn } from "@/components/Header/WhatIsThisBtn";
 
 export const Header = () => {
 	return (

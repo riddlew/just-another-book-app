@@ -1,8 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { clearKeywords, setKeybindsActive, setKeywords } from "@/slices/entriesSlice";
+import {
+	selectKeywords,
+	useAppDispatch,
+	useAppSelector
+} from "@/hooks/redux";
+import {
+	clearKeywords,
+	setKeybindsActive,
+	setKeywords
+} from "@/slices/entriesSlice";
 import { NewListButton } from "@/components/ListButtons/NewListButton";
 import { EditListButton } from "@/components/ListButtons/EditListButton";
 import { DeleteListButton } from "@/components/ListButtons/DeleteListButton";
@@ -10,7 +18,7 @@ import { DeleteListButton } from "@/components/ListButtons/DeleteListButton";
 export const Search = () => {
 	const [visible, setVisible] = useState(false);
 	const dispatch = useAppDispatch();
-	const keywords = useAppSelector(state => state.entries.keywords);
+	const keywords = useAppSelector(selectKeywords);
 
 	const handleSearchToggle = () => {
 		setVisible(prev => !prev);

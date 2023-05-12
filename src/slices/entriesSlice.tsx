@@ -1,7 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '@/store'
-import { EntriesSliceState, EntriesSliceUpdateData, List, NewEntry } from '@/types';
+import {
+	EntriesSliceState,
+	EntriesSliceUpdateData,
+	List,
+	NewEntry
+} from '@/types';
 import {
 	addListToStorage,
 	deleteListFromStorage,
@@ -221,7 +225,7 @@ export const entriesSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(importDataAsync.fulfilled, (state, action) => {
+		builder.addCase(importDataAsync.fulfilled, (state) => {
 			entriesSlice.caseReducers.loadLists(state);
 			entriesSlice.caseReducers.loadList(state, {
 				type: 'loadList',
@@ -233,7 +237,7 @@ export const entriesSlice = createSlice({
 
 export const importDataAsync = createAsyncThunk(
 	'entries/importData',
-	async(data: string, thunkAPI) => {
+	async(data: string) => {
 		await importStorage(data);
 	}
 )
@@ -253,7 +257,5 @@ export const {
 	updateListIndex,
 	setKeybindsActive,
 } = entriesSlice.actions;
-
-export const selectEntriesList = (state: RootState) => state.entries.list.values;
 
 export default entriesSlice.reducer;

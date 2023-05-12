@@ -1,10 +1,7 @@
 import { useRef, useState } from "react";
 import { useAppDispatch } from "@/hooks/redux";
 import { importDataAsync } from "@/slices/entriesSlice";
-
-interface ImportDragDropProps {
-	onImport?: () => void;
-}
+import { ImportDragDropProps } from "@/types";
 
 export const ImportDragDrop = ({onImport}: ImportDragDropProps) => {
 	const dispatch = useAppDispatch();

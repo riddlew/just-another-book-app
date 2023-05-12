@@ -1,11 +1,15 @@
-import { BookEntry } from "./BookEntry"
-import { useAppSelector } from '@/hooks/redux'
+import {
+	selectFiltered,
+	selectLists,
+	useAppSelector
+} from "@/hooks/redux";
+import { BookEntry } from "@/components/BookList/BookEntry"
 
 export const BookList = ({setRefs}: {
 	setRefs: (el: HTMLInputElement, i: number) => void
 }) => {
-  const lists = useAppSelector(state => state.entries.lists);
-	const filtered = useAppSelector(state => state.entries.filtered);
+  const lists = useAppSelector(selectLists);
+	const filtered = useAppSelector(selectFiltered);
 
 	return (
 		<div className="book-list">

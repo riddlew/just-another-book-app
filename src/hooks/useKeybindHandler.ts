@@ -1,14 +1,19 @@
 import { updateEntryById, updateListIndex } from "@/slices/entriesSlice";
 import { useEffect, useRef } from "react";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import {
+	selectFiltered,
+	selectKeybindsActive,
+	selectListIndex,
+	useAppDispatch,
+	useAppSelector
+} from "@/hooks/redux";
 
 export const useKeybindHandler = () => {
 	const dispatch = useAppDispatch();
-	const navIndex = useAppSelector(state => state.entries.listIndex);
-	const filtered = useAppSelector(state => state.entries.filtered);
-	const keybindsActive = useAppSelector(state => state.entries.keybindsActive);
+	const navIndex = useAppSelector(selectListIndex);
+	const filtered = useAppSelector(selectFiltered);
+	const keybindsActive = useAppSelector(selectKeybindsActive);
 	const entryRefs = useRef<HTMLInputElement[]>([]);
-
 	const setRefs = (el: HTMLInputElement, i: number) => { entryRefs.current[i] = el }
 
 	useEffect(() => {

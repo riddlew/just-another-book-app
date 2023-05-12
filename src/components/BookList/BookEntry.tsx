@@ -9,7 +9,7 @@ import { DeleteEntryConfirmationForm } from "@/components/forms/DeleteEntryConfi
 import { motion } from 'framer-motion'
 import ReactModal from "react-modal";
 import { formatDistance } from "date-fns"
-import { EditEntryForm } from "../forms/EditEntryForm";
+import { EditEntryForm } from "@/components/forms/EditEntryForm";
 import { useModal } from "@/hooks/useModal";
 
 export const BookEntry = ({

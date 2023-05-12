@@ -1,11 +1,20 @@
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { clearKeywords, loadList, loadLists } from "@/slices/entriesSlice";
+import {
+  selectCurrentList,
+  selectLists,
+  useAppDispatch,
+  useAppSelector
+} from "@/hooks/redux";
+import {
+  clearKeywords,
+  loadList,
+  loadLists
+} from "@/slices/entriesSlice";
 import { useEffect } from "react"
 
 export const ListSelector = () => {
   const dispatch = useAppDispatch();
-  const lists = useAppSelector(state => state.entries.lists);
-  const currentList = useAppSelector(state => state.entries.currentList);
+  const lists = useAppSelector(selectLists);
+  const currentList = useAppSelector(selectCurrentList);
 
   useEffect(() => {
     dispatch(loadLists());

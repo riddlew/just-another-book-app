@@ -1,5 +1,5 @@
 import ReactModal from "react-modal";
-import { WhatIsThisModal } from "../modals/WhatIsThisModal";
+import { WhatIsThisModal } from "@/components/modals/WhatIsThisModal";
 import { useModal } from "@/hooks/useModal";
 
 export const WhatIsThisBtn = () => {

@@ -2,11 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { DeleteListConfirmationForm } from "@/components/forms/DeleteListConfirmationForm";
 import ReactModal from "react-modal";
-import { useAppSelector } from "@/hooks/redux";
+import { selectCurrentList, useAppSelector } from "@/hooks/redux";
 import { useModal } from "@/hooks/useModal";
 
 export const DeleteListButton = () => {
-	const currentList = useAppSelector(state => state.entries.currentList);
+	const currentList = useAppSelector(selectCurrentList);
 	const {
 		modalOpen,
 		openModal,

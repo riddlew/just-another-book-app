@@ -1,5 +1,5 @@
 import { ModalFormProps } from "@/types";
-import { ImportDragDrop } from "../Header/ImportDragDrop";
+import { ImportDragDrop } from "@/components/Header/ImportDragDrop";
 
 export const ImportModal = ({onSubmit, onCancel}: ModalFormProps) => {
 	return (

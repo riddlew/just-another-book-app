@@ -2,9 +2,9 @@ import { Header } from '@/components/Header/Header'
 import { ListSelector } from '@/components/ListSelector/ListSelector'
 import { Search } from '@/components/Search/Search'
 import { BookList } from '@/components/BookList/BookList'
-import { NewButton } from './components/NewButton/NewButton'
+import { NewButton } from '@/components/NewButton/NewButton'
 import { Toaster } from 'react-hot-toast'
-import { useKeybindHandler } from './hooks/useKeybindHandler'
+import { useKeybindHandler } from '@/hooks/useKeybindHandler'
 
 function App() {
 	const {setRefs} = useKeybindHandler();

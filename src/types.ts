@@ -57,3 +57,12 @@ export interface AddListToStorageOpts {
 	index?: number;
 	data?: Entry[];
 }
+
+export interface ImportDragDropProps {
+	onImport?: () => void;
+}
+
+export interface UseModalProps {
+	onModalOpen?: () => void;
+	onModalClose?: () => void;
+}
