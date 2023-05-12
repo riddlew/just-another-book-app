@@ -193,7 +193,7 @@ export const BookEntry = ({
 						</div>
 
 						<span className="book-entry__last_read">
-							Last Read: <strong>{formatDistance(lastRead, Date.now())} ago</strong>
+							Last Read: <strong>{lastRead === 0 ? 'never' : `${formatDistance(lastRead, Date.now())} ago`}</strong>
 						</span>
 					</div>
 				</div>
