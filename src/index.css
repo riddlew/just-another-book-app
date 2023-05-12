@@ -328,14 +328,17 @@ textarea:focus {
 		items-center
 		sm:items-start
 		sm:mt-2.5
-		sm:flex-row
+		md:flex-row
 		sm:gap-0;
 }
 .book-entry__chapter-group {
 	@apply
 		flex
+		flex-col
+		sm:flex-row
+		w-full
+		sm:w-auto
 		gap-1
-		h-8;
 
 }
 .book-entry__chapter-value {
@@ -365,13 +368,24 @@ textarea:focus {
 		rounded
 		border-theme-gray-100;
 }
+.book-entry__chapter-btn-row {
+	@apply
+		flex
+		gap-1
+		justify-center
+		items-center;
+}
 .book-entry__chapter-plusminus-btn {
 	@apply
-		inline-block
+		block
 		rounded
 		bg-theme-purple-300
 		px-3
-		h-full
+		h-12
+		text-2xl
+		sm:h-full
+		w-full
+		sm:w-auto
 		text-white
 		font-bold;
 }

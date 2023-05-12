@@ -167,34 +167,36 @@ export const BookEntry = ({
 									onKeyDown={onKeyDown}
 								/>
 							</label>
-							<button
-								type="button"
-								className={classnames(
-									"book-entry__chapter-plusminus-btn",
-									{
-										"opacity-0 absolute": !editing
-									}
-								)}
-								onClick={handleChapterDec}
-								onFocus={() => setEditing(true)}
-								onBlur={() => setEditing(false)}
-							>
-								-
-							</button>
-							<button
-								type="button"
-								className={classnames(
-									"book-entry__chapter-plusminus-btn",
-									{
-										"opacity-0 absolute": !editing
-									}
-								)}
-								onClick={handleChapterInc}
-								onFocus={() => setEditing(true)}
-								onBlur={() => setEditing(false)}
-							>
-								+
-							</button>
+							<div className="book-entry__chapter-btn-row">
+								<button
+									type="button"
+									className={classnames(
+										"book-entry__chapter-plusminus-btn",
+										{
+											"opacity-0 absolute": !editing
+										}
+									)}
+									onClick={handleChapterDec}
+									onFocus={() => setEditing(true)}
+									onBlur={() => setEditing(false)}
+								>
+									-
+								</button>
+								<button
+									type="button"
+									className={classnames(
+										"book-entry__chapter-plusminus-btn",
+										{
+											"opacity-0 absolute": !editing
+										}
+									)}
+									onClick={handleChapterInc}
+									onFocus={() => setEditing(true)}
+									onBlur={() => setEditing(false)}
+								>
+									+
+								</button>
+							</div>
 						</div>
 
 						<span className="book-entry__last_read">
