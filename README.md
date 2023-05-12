@@ -1,6 +1,6 @@
 # Libro List
 
-LibroList is a book tracker app that allows you to create and edit multiple lists for books, manga, anime, tv shows, or anything else that can be labelled numerically. Similar apps require you to navigate with a mouse, type on a keyboard to update your tracked books, and click on several buttons. But LibroList includes keyboard shortcuts that allow you to navigate and update your lists blazingly fast, which means you'll spend less time updating your lists and more time reading.
+Libro List is a book tracker app that allows you to create and edit multiple lists for books, manga, anime, tv shows, or anything else that can be labelled numerically. Similar apps require you to navigate with a mouse, type on a keyboard to update your tracked books, and click on several buttons. But LibroList includes keyboard shortcuts that allow you to navigate and update your lists blazingly fast, which means you'll spend less time updating your lists and more time reading.
 
 The keyboard shortcuts are as follows:
 - **h** - decrease the chapter number by 1.
