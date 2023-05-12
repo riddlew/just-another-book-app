@@ -51,7 +51,7 @@ export const useKeybindHandler = () => {
 					updateEntryById({
 						id: filtered[navIndex].id,
 						data: {
-							chapter: Math.max(filtered[navIndex].chapter - 1, 0),
+							chapter: Math.max(Math.floor(filtered[navIndex].chapter - 1), 0),
 						}
 					})
 				)
@@ -62,7 +62,7 @@ export const useKeybindHandler = () => {
 					updateEntryById({
 						id: filtered[navIndex].id,
 						data: {
-							chapter: Math.max(filtered[navIndex].chapter + 1, 0),
+							chapter: Math.max(Math.floor(filtered[navIndex].chapter + 1), 0),
 						}
 					})
 				)

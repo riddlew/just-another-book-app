@@ -65,18 +65,19 @@ export const BookEntry = ({
 
 	const handleChapterBlur = (event: React.FocusEvent<HTMLInputElement>) => {
 		event.preventDefault();
-		setChapter(id, Math.max(+chap, 0));
+		const chapter = Number.isNaN(+chap) ? 0 : +chap
+		setChapter(id, Math.max(chapter, 0));
 		setEditing(false);
 	};
 
 	const handleChapterInc = () => {
 		setChap(Math.max(Math.floor(+chap + 1), 0));
-		setChapter(id, Math.max(+chap + 1, 0));
+		setChapter(id, Math.max(Math.floor(+chap + 1), 0));
 	}
 
 	const handleChapterDec = () => {
 		setChap(Math.max(Math.floor(+chap - 1), 0));
-		setChapter(id, Math.max(+chap - 1, 0));
+		setChapter(id, Math.max(Math.floor(+chap - 1), 0));
 	}
 
 	function updateLastRead(

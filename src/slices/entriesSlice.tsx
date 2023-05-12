@@ -67,8 +67,9 @@ export const entriesSlice = createSlice({
 				uuid = uuidv4();
 			}
 			const newItem = {
+				...action.payload.data,
 				id: uuid,
-				...action.payload.data
+				chapter: +action.payload.data.chapter,
 			};
 			state.list.push(newItem);
 			if(saveListToStorage(action.payload.listName, state.list)) {
