@@ -169,10 +169,11 @@ export const entriesSlice = createSlice({
 			});
 		},
 		removeList: (state, action: PayloadAction<string>) => {
-			if(deleteListFromStorage(action.payload)) {
-				toast.success(<div><strong>{action.payload}</strong> has been deleted</div>);
+			const deletedName = deleteListFromStorage(action.payload);
+			if(deletedName !== '') {
+				toast.success(<div><strong>{deletedName}</strong> has been deleted</div>);
 			} else {
-				toast.error(<div>Unable to delete list <strong>{action.payload}</strong></div>);
+				toast.error(<div>Unable to delete list <strong>{deletedName}</strong></div>);
 			}
 
 			entriesSlice.caseReducers.loadLists(state);

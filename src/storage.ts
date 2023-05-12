@@ -39,14 +39,15 @@ export function deleteListFromStorage(name: string) {
 	const lists: List[] = JSON.parse(listsStr);
 	const keyIdx = lists.findIndex(l => l.slug === name);
 	if (keyIdx > -1) {
+		const deletedName = lists[keyIdx].name;
 		localStorage.removeItem(lists[keyIdx].slug);
 		lists.splice(keyIdx, 1);
 		localStorage.setItem('currentList', '');
 		localStorage.setItem('keys', JSON.stringify(lists));
-		return true;
+		return deletedName;
 	}
 
-	return false;
+	return '';
 }
 
 export function addListToStorage(name: string, slug: string, opts?: AddListToStorageOpts) {
