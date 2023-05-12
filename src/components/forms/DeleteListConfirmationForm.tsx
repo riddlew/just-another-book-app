@@ -1,5 +1,5 @@
 import { ModalFormProps } from '@/types';
-import { useAppDispatch } from '@/hooks';
+import { useAppDispatch } from '@/hooks/redux';
 import { removeList } from '@/slices/entriesSlice';
 import { useEffect, useRef } from 'react';
 

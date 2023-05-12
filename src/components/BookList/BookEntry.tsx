@@ -2,14 +2,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { useEffect, useState } from "react"
 import classnames from "classnames";
-import { useAppDispatch } from '@/hooks'
-import { setKeybindsActive, updateEntryById, updateListIndex } from '@/slices/entriesSlice'
+import { useAppDispatch } from '@/hooks/redux'
+import { updateEntryById, updateListIndex } from '@/slices/entriesSlice'
 import { Entry } from "@/types";
 import { DeleteEntryConfirmationForm } from "@/components/forms/DeleteEntryConfirmationForm";
 import { motion } from 'framer-motion'
 import ReactModal from "react-modal";
 import { formatDistance } from "date-fns"
 import { EditEntryForm } from "../forms/EditEntryForm";
+import { useModal } from "@/hooks/useModal";
 
 export const BookEntry = ({
 	id,
@@ -24,11 +25,21 @@ export const BookEntry = ({
 	refCB: (el: HTMLInputElement) => void,
 	index: number,
 }) => {
-	const [editing, setEditing] = useState(false);
-	const [editModalOpen, setEditModalOpen] = useState(false);
-	const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-	const [chap, setChap] = useState<string|number>(chapter);
 	const dispatch = useAppDispatch();
+	const [editing, setEditing] = useState(false);
+	const [chap, setChap] = useState<string|number>(chapter);
+
+	const {
+		modalOpen: editModalOpen,
+		openModal: openEditModal,
+		closeModal: closeEditModal,
+	} = useModal();
+
+	const {
+		modalOpen: deleteModalOpen,
+		openModal: openDeleteModal,
+		closeModal: closeDeleteModal,
+	} = useModal();
 
 	const setChapter = (id: string, value: number) => {
 		dispatch(
@@ -66,26 +77,6 @@ export const BookEntry = ({
 	const handleChapterDec = () => {
 		setChap(Math.max(Math.floor(+chap - 1), 0));
 		setChapter(id, Math.max(+chap - 1, 0));
-	}
-
-	const handleEdit = () => {
-		setEditModalOpen(true);
-		dispatch(setKeybindsActive(false));
-	}
-
-	const handleDelete = () => {
-		setDeleteModalOpen(true);
-		dispatch(setKeybindsActive(false));
-	};
-
-	function closeEditModal() {
-		setEditModalOpen(false);
-		dispatch(setKeybindsActive(true));
-	}
-
-	function closeDeleteModal() {
-		setDeleteModalOpen(false);
-		dispatch(setKeybindsActive(true));
 	}
 
 	function updateLastRead(
@@ -209,7 +200,7 @@ export const BookEntry = ({
 					<button
 						type="button"
 						className="book-entry__btn__edit"
-						onClick={handleEdit}
+						onClick={openEditModal}
 					>
 						<FontAwesomeIcon icon={faPencil} size="lg" />
 						<span className="book-entry__btn__mobile-text">
@@ -219,7 +210,7 @@ export const BookEntry = ({
 					<button
 						type="button"
 						className="book-entry__btn__delete"
-						onClick={handleDelete}
+						onClick={openDeleteModal}
 					>
 						<FontAwesomeIcon icon={faTrash} size="lg" />
 						<span className="book-entry__btn__mobile-text">

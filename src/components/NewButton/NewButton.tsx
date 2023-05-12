@@ -1,25 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
-import { useState } from "react";
 import { NewEntryForm } from '@/components/forms/NewEntryForm'
 import ReactModal from 'react-modal';
-import { useAppDispatch, useAppSelector } from "@/hooks";
-import { setKeybindsActive } from "@/slices/entriesSlice";
+import { useAppSelector } from "@/hooks/redux";
+import { useModal } from "@/hooks/useModal";
 
 export const NewButton = () => {
-	const dispatch = useAppDispatch();
 	const currentList = useAppSelector(state => state.entries.currentList);
-	const [modalOpen, setModalOpen] = useState(false);
-
-	function openModal() {
-		setModalOpen(true);
-		dispatch(setKeybindsActive(false));
-	}
-
-	function closeModal() {
-		setModalOpen(false);
-		dispatch(setKeybindsActive(true));
-	}
+	const {
+		modalOpen,
+		openModal,
+		closeModal
+	} = useModal();
 
 	return (
 		<>

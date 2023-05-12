@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import classnames from 'classnames'
 import { ModalFormProps, EntryData } from '@/types';
-import { useAppDispatch } from '@/hooks';
+import { useAppDispatch } from '@/hooks/redux';
 import { updateEntryById } from '@/slices/entriesSlice';
 import { useEffect } from 'react';
 

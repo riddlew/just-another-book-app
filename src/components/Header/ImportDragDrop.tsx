@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useAppDispatch } from "@/hooks";
+import { useAppDispatch } from "@/hooks/redux";
 import { importDataAsync } from "@/slices/entriesSlice";
 
 interface ImportDragDropProps {

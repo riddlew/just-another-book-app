@@ -1,22 +1,13 @@
-import { useState } from "react";
 import ReactModal from "react-modal";
 import { WhatIsThisModal } from "../modals/WhatIsThisModal";
-import { setKeybindsActive } from "@/slices/entriesSlice";
-import { useAppDispatch } from "@/hooks";
+import { useModal } from "@/hooks/useModal";
 
 export const WhatIsThisBtn = () => {
-	const dispatch = useAppDispatch();
-	const [modalOpen, setModalOpen] = useState(false);
-
-	const openModal = () => {
-		setModalOpen(true);
-		dispatch(setKeybindsActive(false));
-	}
-
-	const closeModal = () => {
-		setModalOpen(false);
-		dispatch(setKeybindsActive(true));
-	}
+	const {
+		modalOpen,
+		openModal,
+		closeModal
+	} = useModal();
 
 	return (
 		<>

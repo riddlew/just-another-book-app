@@ -1,5 +1,5 @@
 import { BookEntry } from "./BookEntry"
-import { useAppSelector } from '@/hooks'
+import { useAppSelector } from '@/hooks/redux'
 
 export const BookList = ({setRefs}: {
 	setRefs: (el: HTMLInputElement, i: number) => void

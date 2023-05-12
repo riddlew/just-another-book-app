@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
-import { useAppDispatch, useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { clearKeywords, setKeybindsActive, setKeywords } from "@/slices/entriesSlice";
 import { NewListButton } from "@/components/ListButtons/NewListButton";
 import { EditListButton } from "@/components/ListButtons/EditListButton";

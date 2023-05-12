@@ -1,25 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 import { NewListForm } from "@/components/forms/NewListForm";
 import ReactModal from "react-modal";
-import { setKeybindsActive } from "@/slices/entriesSlice";
-import { useAppDispatch } from "@/hooks";
+import { useModal } from "@/hooks/useModal";
 
 export const NewListButton = () => {
-	const dispatch = useAppDispatch();
-	const [modalOpen, setModalOpen] = useState(false);
-
-	function openModal() {
-		setModalOpen(true);
-		dispatch(setKeybindsActive(false));
-
-	}
-
-	function closeModal() {
-		setModalOpen(false);
-		dispatch(setKeybindsActive(true));
-	}
+	const {
+		modalOpen,
+		openModal,
+		closeModal
+	} = useModal();
 
 	return (
 		<>

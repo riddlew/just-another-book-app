@@ -1,6 +1,4 @@
 import { ModalFormProps } from "@/types";
-import { faArrowDown, faArrowLeft, faArrowRight, faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const WhatIsThisModal = ({onCancel}: ModalFormProps) => {
 	return (

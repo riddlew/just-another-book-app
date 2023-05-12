@@ -1,22 +1,13 @@
-import { useState } from "react";
 import ReactModal from "react-modal";
 import { ExportModal } from "@/components/modals/ExportModal";
-import { useAppDispatch } from "@/hooks";
-import { setKeybindsActive } from "@/slices/entriesSlice";
+import { useModal } from "@/hooks/useModal";
 
 export const ExportBtn = () => {
-	const dispatch = useAppDispatch();
-	const [modalOpen, setModalOpen] = useState(false);
-
-	const openModal = () => {
-		setModalOpen(true);
-		dispatch(setKeybindsActive(false));
-	}
-
-	const closeModal = () => {
-		setModalOpen(false);
-		dispatch(setKeybindsActive(true));
-	}
+	const {
+		modalOpen,
+		openModal,
+		closeModal
+	} = useModal();
 
 	return (
 		<>
@@ -42,7 +33,6 @@ export const ExportBtn = () => {
 				}}
 			>
 				<ExportModal
-					// onSubmit={handleExport}
 					onCancel={closeModal}
 				/>
 			</ReactModal>

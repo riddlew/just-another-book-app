@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { clearKeywords, loadList, loadLists } from "@/slices/entriesSlice";
 import { useEffect } from "react"
 
