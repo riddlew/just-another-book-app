@@ -26,7 +26,7 @@ export const EditListForm = ({onSubmit, onCancel, currentTitle}: ModalFormProps 
 	}, [setFocus])
 
 	return (
-		<form onSubmit={handleSubmit(withSubmit)}>
+		<form onSubmit={handleSubmit(withSubmit)} autoComplete="off">
 			<h2>Edit List</h2>
 			{errors.title?.type === 'required' && (
 				<p className="errorDescription">

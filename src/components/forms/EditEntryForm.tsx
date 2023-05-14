@@ -32,7 +32,7 @@ export const EditEntryForm = ({onSubmit, onCancel, entry, entryId}: ModalFormPro
 	}, [setFocus])
 
 	return (
-		<form onSubmit={handleSubmit(withSubmit)}>
+		<form onSubmit={handleSubmit(withSubmit)} autoComplete="off">
 			<h2>Edit Entry</h2>
 			{errors.title?.type === 'required' && (
 				<p className="errorDescription">

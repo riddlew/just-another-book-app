@@ -38,7 +38,7 @@ export const NewEntryForm = ({onSubmit, onCancel}: ModalFormProps) => {
 	}, [setFocus])
 
 	return (
-		<form onSubmit={handleSubmit(withSubmit)}>
+		<form onSubmit={handleSubmit(withSubmit)} autoComplete="off">
 			<h2>New Entry</h2>
 			{errors.title?.type === 'required' && (
 				<p className="errorDescription">
